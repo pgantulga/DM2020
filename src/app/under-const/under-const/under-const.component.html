@@ -1,0 +1,74 @@
+<!--<mat-toolbar class="top-navbar">-->
+<!--  <mat-toolbar-row>-->
+<!--    <p>This is toolbar</p>-->
+<!--  </mat-toolbar-row>-->
+<!--</mat-toolbar>-->
+<div class="wrapper">
+  <div class="gradient"></div>
+  <video autoplay loop width="100%" #videoPlayer [muted]="true">
+    <source [src]="'../../../assets/video_last.mp4'" type="video/mp4">
+    browser no supported
+  </video>
+</div>
+<div class="main-content" style="position: relative" fxLayoutAlign="row">
+  <div fxFlex=""></div>
+  <div class="container" [class.container-handset]="isHandset$ | async" [class.container-desktop]="!(isHandset$ | async)" fxLayout="column" fxLayoutAlign="center start" fxLayout.gt-sm="row">
+    <div fxLayout="column" fxLayoutAlign="space-around start" style="height: 100%">
+      <div fxLayout="column">
+
+      </div>
+      <div fxLayout="column">
+        <img [class.main-logo-small]="isHandset$ | async" [class.main-logo]="!(isHandset$ | async)" src="../../../assets/logo_white.png" alt="">
+<!--        <p class="mat-display-1 mat-primary">-->
+<!--          International Mining Investors' Forum-->
+<!--        </p>-->
+        <p class="mat-display-2 mat-primary" style="margin-bottom: 8px;padding-left: 16px">
+          October 30, 2020
+        </p>
+        <div fxLayout="row" fxLayoutAlign="start center" style="margin-bottom: 8px;padding-left: 16px">
+          <div fxLayout="column">
+            <p class="mat-primary mat-headline">Shangri-La, Ulaanbaatar</p>
+            <p class="mat-headline mat-primary">Ulaanbaatar Mongolia</p>
+          </div>
+        </div>
+        <div fxLayout="row" style="margin-top: 32px;padding-left: 16px">
+          <button mat-flat-button color="accent" style="text-transform: uppercase" fxFlex="" [routerLink]="['/about']">Welcome note</button>
+<!--          <button mat-button class="mat-primary">Save the date</button>-->
+        </div>
+        <div fxFlex="" style="height: 100%;padding-left: 16px; margin-top: 32px" fxLayout="column" fxLayoutAlign="center start">
+          <p class="mat-body-1 mat-primary">Please follow our social media channels for latest activity.</p>
+          <div fxLayout="row" >
+            <button mat-icon-button class="social-button" (click)="goToLink('https://www.facebook.com/discovermongoliaimif')">
+              <i class="fab fa-facebook fa-2x" style="color: white"></i>
+            </button>
+            <button mat-icon-button (click)="goToLink('https://twitter.com/DiscoverMng')">
+              <i class="fab fa-twitter fa-2x" style="color: white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex=""></div>
+  </div>
+  <div fxFlex=""></div>
+</div>
+<mat-toolbar color="accent" style="position: absolute; bottom: 0; z-index: 10000">
+  <mat-toolbar-row fxLayout="row">
+    <div fxFlex=""></div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <p>Website is coming soon.</p>
+<!--      <div fxLayout="row" style="margin: 0 0 0 8px " >-->
+<!--        <button mat-icon-button class="social-button">-->
+<!--          <i class="fab fa-facebook fa-2x" style="color: white"></i>-->
+<!--        </button>-->
+<!--        <button mat-icon-button>-->
+<!--          <i class="fab fa-twitter fa-2x" style="color: white"></i>-->
+<!--        </button>-->
+<!--      </div>-->
+    </div>
+    <div fxFlex=""></div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+

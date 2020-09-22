@@ -1,0 +1,62 @@
+@import "../../../styles/custom-theme";
+p {
+  margin: 0 ;
+  color: mat-color($DM-primary, 100);
+}
+.social-button {
+  margin: 0 16px 0 0;
+}
+.main-logo {
+   width: 300px;
+ }
+.main-logo-small {
+  width: 200px;
+}
+.main-content {
+  height: 100%;
+}
+
+.container-desktop {
+  padding: 64px 16px 156px 16px;
+
+}
+
+.container-handset {
+  padding: 64px 16px 32px 16px;
+
+}
+.top-navbar {
+  position: fixed;
+  background-color: transparent;
+  color: white;
+  z-index: 10000;
+}
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+}
+.gradient {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+  width: 100%;
+  height: calc(100vh);
+  min-height: 600px;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+video {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: calc(100vh);
+  min-height: 600px;
+  object-fit: cover;
+}
+
+mat-icon.big-icon {
+  transform: scale(1.5);
+  color: mat-color($DM-primary, 100);
+
+}
