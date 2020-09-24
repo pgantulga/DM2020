@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MdModule} from './md/md.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { ShellComponent } from './shell/shell.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShellComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

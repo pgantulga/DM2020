@@ -3,9 +3,12 @@
 
 @include mat-core();
 $DM-primary: mat-palette($mat-grey, A100);
+$DM-primary-dark: mat-palette($mat-blue-gray, 900);
 $DM-accent: mat-palette($mat-deep-purple, 700);
+$DM-accent-dark: mat-palette($mat-deep-purple, 700);
 $DM-warn: mat-palette($mat-red);
 $DM-theme: mat-light-theme($DM-primary, $DM-accent, $DM-warn);
+$DM-dark-theme: mat-dark-theme($DM-primary-dark, $DM-accent-dark, $DM-warn);
 
 $DM-typography: mat-typography-config(
   $font-family:   'Fira Sans Condensed, "Helvetica Neue", sans-serif',
@@ -26,6 +29,6 @@ $DM-typography: mat-typography-config(
 );
 @include mat-base-typography($DM-typography);
 @include angular-material-typography($DM-typography);
-@include angular-material-theme($DM-theme);
+@include angular-material-theme($DM-dark-theme);
 
 

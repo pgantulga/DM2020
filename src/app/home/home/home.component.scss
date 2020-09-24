@@ -1,0 +1,22 @@
+.wrapper {
+  position: fixed;
+  width: 100%;
+}
+.gradient {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+  width: 100%;
+  height: calc(100vh);
+  min-height: 600px;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+video {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: calc(100vh);
+  min-height: 600px;
+  object-fit: cover;
+}
