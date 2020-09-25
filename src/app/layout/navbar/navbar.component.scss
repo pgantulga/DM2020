@@ -4,3 +4,38 @@
   background-color: transparent;
   z-index: 5;
 }
+.homeButton {
+  height: 48px;
+  //width: 48px;
+}
+.toolbarLogo {
+  height: 42px;
+}
+.top-navbar {
+  //position: fixed;
+  background-color: transparent;
+  color: white;
+  z-index: 10000;
+}
+.wrapper {
+  //position: fixed;
+  width: 100%;
+}
+.gradient {
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  width: 100%;
+  height: calc(100vh);
+  min-height: 600px;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+video {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: calc(100vh);
+  min-height: 600px;
+  object-fit: cover;
+}

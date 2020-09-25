@@ -3,8 +3,15 @@
     <div fxFlex></div>
     <div class="container" fxLayout="row">
       <div fxLayout="row" fxLayoutAlign="center center">
-        <p>test</p>
+        <button mat-button class="homeButton" [routerLink]="['/home']">
+          <img src="../../../assets/Logo_white.png" alt="header_logo" class="toolbarLogo">
+        </button>
       </div>
+      <mat-nav-list fxLayout="row">
+        <a *ngFor="let menu of topMenu" mat-list-item routerLink="{{menu.link}}" routerLinkActive="active"  role="navigation" style="font-weight: bold">
+          {{menu.name }}
+        </a>
+      </mat-nav-list>
     </div>
     <div fxFlex></div>
   </mat-toolbar-row>

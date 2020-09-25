@@ -1,5 +1,10 @@
 @import '../../node_modules/@angular/material/theming';
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500&display=swap');
+//@import "../assets/MyriadVariableConcept-Roman.otf";
+@font-face {
+  font-family: Myriad Variable Concept;
+  src: url('../assets/MyriadVariableConcept-Roman.otf');
+}
 
 @include mat-core();
 $DM-primary: mat-palette($mat-grey, A100);
@@ -11,7 +16,7 @@ $DM-theme: mat-light-theme($DM-primary, $DM-accent, $DM-warn);
 $DM-dark-theme: mat-dark-theme($DM-primary-dark, $DM-accent-dark, $DM-warn);
 
 $DM-typography: mat-typography-config(
-  $font-family:   'Fira Sans Condensed, "Helvetica Neue", sans-serif',
+  $font-family:   'Myriad Variable Concept',
   $display-4:     mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
   $display-3:     mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
   $display-2:     mat-typography-level(45px, 48px, 500, $letter-spacing: -0.005em),
