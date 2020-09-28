@@ -21,6 +21,8 @@ export class UnderConstComponent implements OnInit {
   ngOnInit(): void {
     this.video = '../../../assets/header-loop.mp4';
 
+
+
     // this.vp.nativeElement.play();
   }
   goToLink(url): void  {

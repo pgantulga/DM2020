@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {UnderConstComponent} from './under-const/under-const.component';
+import {AgendaComponent} from "./agenda/agenda.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: UnderConstComponent
+    component: AgendaComponent
   }
 ];
 
-// @ts-ignore
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-// @ts-ignore
-
-export class UnderConstRoutingModule { }
+export class AgendaRoutingModule { }

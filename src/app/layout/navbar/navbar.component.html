@@ -7,8 +7,8 @@
           <img src="../../../assets/Logo_white.png" alt="header_logo" class="toolbarLogo">
         </button>
       </div>
-      <mat-nav-list fxLayout="row">
-        <a *ngFor="let menu of topMenu" mat-list-item routerLink="{{menu.link}}" routerLinkActive="active"  role="navigation" style="font-weight: bold">
+      <mat-nav-list fxLayout="row" fxHide.xs="">
+        <a class="mat-body-1 nav-link" *ngFor="let menu of topMenu" mat-list-item routerLink="{{menu.link}}" routerLinkActive="active-list-item"  role="navigation">
           {{menu.name }}
         </a>
       </mat-nav-list>

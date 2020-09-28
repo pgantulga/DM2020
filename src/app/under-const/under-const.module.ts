@@ -7,6 +7,7 @@ import {MdModule} from '../md/md.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 
+// @ts-ignore
 @NgModule({
   declarations: [UnderConstComponent],
   imports: [

@@ -1,18 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 @import "custom-theme";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%;
+font-family: Myriad Variable Concept, Falln,serif !important;
+}
+
+body {
+  margin: 0;
+  //font-family: Myriad Variable Concept, serif;
+  //font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 .mat-headline {
   margin: 0 !important;
 }
+a.nav-link{
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+a.nav-link.active-list-item {
+  color: white !important;
+}
 
-
+//a .active-list-item {
+//  color: rgba(255, 255, 255)
+//}
 //Container
 
 @media only screen and (max-width: 1920px ) and ( min-width: 1280px){
   .container {
-    width: 1110px;
+    width: 1440px;
+    //1100
   }
 }
 

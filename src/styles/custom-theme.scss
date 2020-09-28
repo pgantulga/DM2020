@@ -1,5 +1,5 @@
 @import '../../node_modules/@angular/material/theming';
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500&display=swap');
 //@import "../assets/MyriadVariableConcept-Roman.otf";
 @font-face {
   font-family: Myriad Variable Concept;
@@ -8,15 +8,21 @@
 
 @include mat-core();
 $DM-primary: mat-palette($mat-grey, A100);
-$DM-primary-dark: mat-palette($mat-blue-gray, 900);
+$DM-primary-dark: mat-palette($mat-grey, 900);
 $DM-accent: mat-palette($mat-deep-purple, 700);
 $DM-accent-dark: mat-palette($mat-deep-purple, 700);
 $DM-warn: mat-palette($mat-red);
 $DM-theme: mat-light-theme($DM-primary, $DM-accent, $DM-warn);
 $DM-dark-theme: mat-dark-theme($DM-primary-dark, $DM-accent-dark, $DM-warn);
 
+$background-color: map_get($mat-grey, 900);
+$background: map-get($DM-dark-theme, background);
+$background: map_merge($background, (background: $background-color));
+$DM-dark-theme: map_merge($DM-dark-theme, (background: $background));
+
+
 $DM-typography: mat-typography-config(
-  $font-family:   'Myriad Variable Concept',
+  $font-family:   'Myriad Variable Concept, sans-serif',
   $display-4:     mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
   $display-3:     mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
   $display-2:     mat-typography-level(45px, 48px, 500, $letter-spacing: -0.005em),

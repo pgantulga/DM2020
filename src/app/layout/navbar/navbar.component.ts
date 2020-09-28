@@ -9,23 +9,23 @@ export class NavbarComponent implements OnInit {
   topMenu = [
     {
       name: 'Agenda',
-      link: ''
+      link: 'agenda'
     },
     {
       name: 'Registration',
-      link: ''
+      link: 'registration'
     },
     {
       name: 'Exhibition',
-      link: ''
+      link: 'exhibition'
     },
     {
       name: 'About',
-      link: ''
+      link: 'about'
     },
     {
       name: 'Contact',
-      link: ''
+      link: 'contact'
     }
   ]
   constructor() { }
