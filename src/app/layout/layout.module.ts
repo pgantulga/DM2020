@@ -7,13 +7,15 @@ import {MdModule} from '../md/md.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from "@angular/router";
 import { ItemCardComponent } from './item-card/item-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     ShellComponent,
     NavbarComponent,
     SectionCardComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    FooterComponent
   ],
   exports: [
     ShellComponent,

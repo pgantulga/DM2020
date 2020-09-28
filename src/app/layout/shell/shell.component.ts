@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {map, shareReplay} from "rxjs/operators";
+import {filter, map, shareReplay} from 'rxjs/operators';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-shell',
@@ -14,7 +15,14 @@ export class ShellComponent implements OnInit {
       map( result => result.matches),
       shareReplay()
     );
-  constructor(public breakpointObserver: BreakpointObserver) { }
+  currentRoute: string;
+  routeService: any;
+  constructor(public breakpointObserver: BreakpointObserver, public router: Router) { }
   ngOnInit(): void {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd))
+      .subscribe( (e: any) => {
+        this.currentRoute = this.routeService.getCurrentRoute(e.url);
+      });
   }
 }
