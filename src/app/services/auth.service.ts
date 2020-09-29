@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {switchMap} from 'rxjs/operators';
 import * as firebase from 'firebase';
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {SnackComponent} from "../layout/snack/snack.component";
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {SnackComponent} from '../layout/snack/snack.component';
 
 export interface User {
   firstName: string;
@@ -45,13 +45,15 @@ export class AuthService {
     const credential = await this.af.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
-
   private updateUserData(user: any): Promise<any> {
     const ref = this.userCollection.doc(user.uid);
     const data = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
+      roles: {
+        guest: true
+      },
     };
     return ref.set(data, {merge: true});
   }
@@ -65,7 +67,6 @@ export class AuthService {
       });
     return this.router.navigate(['/']);
   }
-
   // permission and roles
   checkAuth(user: User, allowedRoles: string[]): boolean {
     if (!user) { return false; }

@@ -7,19 +7,27 @@
 }
 
 @include mat-core();
-$DM-primary: mat-palette($mat-grey, A100);
+//Dark theme
 $DM-primary-dark: mat-palette($mat-grey, 900);
-$DM-accent: mat-palette($mat-deep-purple, 700);
 $DM-accent-dark: mat-palette($mat-deep-purple, 700);
 $DM-warn: mat-palette($mat-red);
-$DM-theme: mat-light-theme($DM-primary, $DM-accent, $DM-warn);
 $DM-dark-theme: mat-dark-theme($DM-primary-dark, $DM-accent-dark, $DM-warn);
-
 $background-color: map_get($mat-grey, 900);
 $background: map-get($DM-dark-theme, background);
 $background: map_merge($background, (background: $background-color));
 $DM-dark-theme: map_merge($DM-dark-theme, (background: $background));
-
+@include angular-material-theme($DM-dark-theme);
+//Light theme
+.light-theme {
+  color: $dark-primary-text;
+  $DM-primary: mat-palette($mat-grey, A100);
+  $DM-accent: mat-palette($mat-deep-purple, 700);
+  $DM-warn: mat-palette($mat-red);
+  $DM-theme: mat-light-theme($DM-primary, $DM-accent, $DM-warn);
+  //$background: map-get($DM-primary, background);
+  //$DM-dark-theme: map_merge($DM-primary, (background: $background));
+  @include angular-material-theme($DM-theme);
+}
 
 $DM-typography: mat-typography-config(
   $font-family:   'Myriad Variable Concept, sans-serif',
@@ -40,6 +48,5 @@ $DM-typography: mat-typography-config(
 );
 @include mat-base-typography($DM-typography);
 @include angular-material-typography($DM-typography);
-@include angular-material-theme($DM-dark-theme);
 
 

@@ -3,8 +3,11 @@
 .login-card {
   width: 360px;
   max-height: 800px;
-  background-color: mat-color($DM-dark-theme, A100);
+  background-color: rgba(255,255,255);
   padding: 20px 32px 20px 32px;
+  p {
+    color: rgba(0,0,0,0.7);
+  }
   .logo-container {
     padding: 16px 0 16px 0;
   }

@@ -29,5 +29,59 @@ export class MenuService {
       name: 'Contact',
       link: 'contact'
     }
-  ]
+  ];
+  public sideNavMenu: Menu [] = [
+    {
+      name: 'Agenda',
+      link: 'agenda'
+    },
+    {
+      name: 'Registration',
+      link: 'registration'
+    },
+    {
+      name: 'Exhibition',
+      link: 'exhibition'
+    },
+    {
+      name: 'About',
+      link: 'about'
+    },
+    {
+      name: 'Contact',
+      link: 'contact'
+    }
+  ];
+  public footerMenu: Menu [] = [
+    {
+      name: 'Agenda',
+      link: 'agenda'
+    },
+    {
+      name: 'Registration',
+      link: 'registration'
+    },
+    {
+      name: 'Exhibition',
+      link: 'exhibition'
+    },
+    {
+      name: 'About',
+      link: 'about'
+    },
+    {
+      name: 'Contact',
+      link: 'contact'
+    }
+  ];
+    public adminMenu: Menu [] = [
+    {
+      name: 'Articles',
+      link: '/admin/articles'
+    },
+    {
+      name: 'Agenda',
+      link: ''
+    }
+  ];
 }

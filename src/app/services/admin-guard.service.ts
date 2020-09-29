@@ -9,14 +9,14 @@ import {map, tap} from 'rxjs/operators';
 })
 export class AdminGuard implements CanActivate{
   constructor(private authService: AuthService, private router: Router ) { }
-  canActivate(): any{
+  canActivate(): any {
     return this.authService.user$.pipe(
       take(1),
       map(user => !!(user && user.roles.admin)),
       tap(isAdmin => {
         if (!isAdmin) {
           console.error('Access denied');
-          this.router.navigate(['/']);
+          this.router.navigate(['/auth/login']);
         }
       })
     );

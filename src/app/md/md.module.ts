@@ -14,7 +14,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatInputModule} from "@angular/material/input";
+import {MatDialogModule} from "@angular/material/dialog";
 
+// @ts-ignore
 @NgModule({
   exports: [
     CommonModule,
@@ -22,10 +25,13 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatInputModule,
     MatTabsModule,
     MatListModule,
+    MatChipsModule,
     MatCardModule,
     MatMenuModule,
+    MatDialogModule,
     MatSidenavModule,
     MatPaginatorModule,
     MatAutocompleteModule,

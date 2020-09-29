@@ -1,6 +1,5 @@
 <app-navbar *ngIf="currentLayoutObj.layout1">
-  <button color="accent"
-          type="button"
+  <button type="button"
           aria-label="Toggle sidenav"
           mat-icon-button
           (click)="drawer.toggle()"
@@ -8,21 +7,47 @@
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
 </app-navbar>
+<div class="wrapper" *ngIf="currentLayoutObj.layout1" [ngSwitch]="currentRoute" >
+  <ng-container *ngSwitchCase="'home'">
+    <div class="gradient"></div>
+    <video autoplay loop width="100%" #videoPlayer [muted]="true" >
+      <source [src]="'../../../assets/video_last.mp4'" type="video/mp4">
+      browser no supported
+    </video>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <div class="gradient-image" fxLayout="row">
+      <div fxFlex=""></div>
+      <div class="container" fxLayout="row">
+        <div fxLayout="column" fxLayoutAlign="end start" fxFlex="">
+          <p class="mat-body-1">Date and time</p>
+          <p class="mat-display-2">Conference agenda</p>
+        </div>
+      </div>
+      <div fxFlex=""></div>
+    </div>
+    <img class="image-wrapper" [src]="'../../../assets/agenda_cover.jpg'" alt="header-wrapper">
+  </ng-container>
+</div>
 <mat-sidenav-container [class.color-background]="currentLayoutObj.layout3" >
   <mat-sidenav #drawer class="mat-elevation-z3"
                [attr.role]="(currentRoute === 'admin') ? 'directory' : 'navigation'"
                [opened]="(currentRoute === 'admin') && !(isHandset$ | async)"
                [mode]="(currentRoute === 'admin') ? 'side' : 'over'">
+    <mat-nav-list fxLayout="column">
+      <a mat-list-item *ngFor="let item of sideMenu" routerLink="{{item.link}}">
+        {{item.name}}
+      </a>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content fxLayout="column" [fxLayoutAlign]="currentLayoutObj.layout3 ? 'center center' : ''">
-    <div fxLayout="row">
+    <div fxLayout="row" [class.layout-two]="currentLayoutObj.layout2">
       <div fxFlex="" *ngIf="currentLayoutObj.layout1"></div>
-      <div [class.container]="currentLayoutObj.layout1">
+      <div [class.container]="currentLayoutObj.layout1" class="fullWidth">
         <ng-content></ng-content>
       </div>
-      <div fxFlex=""*ngIf="currentLayoutObj.layout1"></div>
+      <div fxFlex="" *ngIf="currentLayoutObj.layout1"></div>
     </div>
-    <mat-divider></mat-divider>
-    <app-footer></app-footer>
+    <app-footer *ngIf="currentLayoutObj.layout1"></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

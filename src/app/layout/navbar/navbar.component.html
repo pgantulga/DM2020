@@ -1,9 +1,10 @@
 <mat-toolbar class="mat-primary top-toolbar" >
   <mat-toolbar-row>
     <div fxFlex></div>
-    <div class="container" fxLayout="row" fxLayoutAlign.xs="center center">
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <button mat-button class="homeButton" [routerLink]="['/home']">
+    <div class="container" fxLayout="row" fxLayoutAlign.xs="space-between center">
+      <ng-content></ng-content>
+      <div fxLayout="row" fxLayoutAlign="center center" >
+        <button mat-button class="homeButton" [routerLink]="['/home']" color="primary">
           <img src="../../../assets/Logo_white.png" alt="header_logo" class="toolbarLogo">
         </button>
       </div>
@@ -16,23 +17,3 @@
     <div fxFlex></div>
   </mat-toolbar-row>
 </mat-toolbar>
-<div class="wrapper" *ngIf="currentRoute === 'home'">
-  <div class="gradient"></div>
-  <video autoplay loop width="100%" #videoPlayer [muted]="true" >
-    <source [src]="'../../../assets/video_last.mp4'" type="video/mp4">
-    browser no supported
-  </video>
-</div>
-<div class="wrapper" *ngIf="currentRoute === 'agenda'">
-  <div class="gradient-image" fxLayout="row">
-    <div fxFlex=""></div>
-    <div class="container" fxLayout="row">
-      <div fxLayout="column" fxLayoutAlign="end start" fxFlex="">
-        <p class="mat-body-1">Date and time</p>
-        <p class="mat-display-2">Conference agenda</p>
-      </div>
-    </div>
-    <div fxFlex=""></div>
-  </div>
-  <img class="image-wrapper" [src]="'../../../assets/agenda_cover.jpg'" alt="header-wrapper">
-</div>

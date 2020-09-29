@@ -4,6 +4,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {filter, map, shareReplay} from 'rxjs/operators';
 import {NavigationEnd, Router} from '@angular/router';
 import {RouteService} from "../../services/route-service.service";
+import {MenuService} from "../../services/menu.service";
 
 @Component({
   selector: 'app-shell',
@@ -16,15 +17,18 @@ export class ShellComponent implements OnInit {
     layout2: boolean,
     layout3: boolean
   };
+  sideMenu: Array<any>;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset])
     .pipe(
       map( result => result.matches),
       shareReplay()
     );
   currentRoute: string;
-  constructor(public breakpointObserver: BreakpointObserver, public router: Router, public routeService: RouteService) {
+  constructor(public breakpointObserver: BreakpointObserver,
+              public router: Router,
+              public routeService: RouteService,
+              public menuService: MenuService) {
     this.getLayoutType(this.currentRoute);
-
   }
   ngOnInit(): void {
     this.router.events.pipe(
@@ -32,9 +36,13 @@ export class ShellComponent implements OnInit {
       .subscribe( (e: any) => {
         this.currentRoute = this.routeService.getCurrentRoute(e.url);
         this.currentLayoutObj = this.routeService.getLayout(this.currentRoute);
+        this.sideMenu = this.getSideMenu(this.currentRoute);
       });
   }
   getLayoutType(currentRoute): any {
     this.currentLayoutObj = this.routeService.getLayout(currentRoute);
+  }
+  getSideMenu(route): any {
+    return (route === 'admin') ? this.menuService.adminMenu : this.menuService.sideNavMenu
   }
 }

@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MdModule} from './md/md.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {LayoutModule} from './layout/layout.module';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import {LayoutModule} from './layout/layout.module';
   imports: [
     BrowserModule,
     LayoutModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
     BrowserAnimationsModule,
     MdModule,
