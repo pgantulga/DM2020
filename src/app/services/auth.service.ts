@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {switchMap} from 'rxjs/operators';
 import * as firebase from 'firebase';
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SnackComponent} from "../layout/snack/snack.component";
 
 export interface User {
   firstName: string;
@@ -30,7 +32,7 @@ export interface Roles {
 export class AuthService {
   user$: Observable<any>;
   userCollection = this.db.collection<any>('users');
-  constructor(public af: AngularFireAuth, private router: Router, private db: AngularFirestore) {
+  constructor(public af: AngularFireAuth, private router: Router, private db: AngularFirestore, public snackBar: MatSnackBar) {
     this.user$ = this.af.authState.pipe(
       switchMap( user => {
         if (user) { return this.userCollection.doc<any>(user.uid).valueChanges(); }
@@ -38,14 +40,13 @@ export class AuthService {
       })
     );
   }
-  async googleLogin() {
+  async googleLogin(): Promise<any> {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credential = await this.af.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
 
-  // tslint:disable-next-line:typedef
-  private updateUserData(user: any) {
+  private updateUserData(user: any): Promise<any> {
     const ref = this.userCollection.doc(user.uid);
     const data = {
       uid: user.uid,
@@ -53,6 +54,16 @@ export class AuthService {
       displayName: user.displayName,
     };
     return ref.set(data, {merge: true});
+  }
+  async signOut(): Promise<any> {
+    await this.af.signOut()
+      .then(res => {
+        console.log('Successfully signed out');
+        this.snackBar.openFromComponent(SnackComponent, {
+          data: 'Амжилттай гарлаа'
+        });
+      });
+    return this.router.navigate(['/']);
   }
 
   // permission and roles

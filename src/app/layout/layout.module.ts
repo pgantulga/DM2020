@@ -8,6 +8,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from "@angular/router";
 import { ItemCardComponent } from './item-card/item-card.component';
 import { FooterComponent } from './footer/footer.component';
+import { SnackComponent } from './snack/snack.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     SectionCardComponent,
     ItemCardComponent,
-    FooterComponent
+    FooterComponent,
+    SnackComponent
   ],
   exports: [
     ShellComponent,

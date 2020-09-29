@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class RouteService {
   constructor() { }
   getCurrentRoute(url) {
-    if (url.includes('/home')) {
+    if (url.includes('home')) {
       return 'home';
     }
     if (url.includes('agenda')) {
@@ -20,4 +20,24 @@ export class RouteService {
       return 'admin';
     }
   }
-}
+  getLayout(route) {
+    if (route === 'admin') {
+      return {
+        layout1: false,
+        layout2: true,
+        layout3: false
+      };
+    } else if (route === 'login') {
+      return {
+        layout1: false,
+        layout2: false,
+        layout3: true
+      };
+    } else {
+      return {
+        layout1: true,
+        layout2: false,
+        layout3: false
+      };
+    }
+  }}

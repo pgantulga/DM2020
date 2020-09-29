@@ -23,4 +23,6 @@ import {LayoutModule} from './layout/layout.module';
   providers: [],
   bootstrap: [AppComponent]
 })
+// @ts-ignore
+
 export class AppModule { }

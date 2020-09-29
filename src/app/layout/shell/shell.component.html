@@ -1,13 +1,26 @@
-<app-navbar></app-navbar>
-<mat-sidenav-container>
-  <mat-sidenav></mat-sidenav>
-  <mat-sidenav-content fxLayout="column">
+<app-navbar *ngIf="currentLayoutObj.layout1">
+  <button color="accent"
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="(isHandset$ | async) && (!currentLayoutObj.layout2)">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+</app-navbar>
+<mat-sidenav-container [class.color-background]="currentLayoutObj.layout3" >
+  <mat-sidenav #drawer class="mat-elevation-z3"
+               [attr.role]="(currentRoute === 'admin') ? 'directory' : 'navigation'"
+               [opened]="(currentRoute === 'admin') && !(isHandset$ | async)"
+               [mode]="(currentRoute === 'admin') ? 'side' : 'over'">
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column" [fxLayoutAlign]="currentLayoutObj.layout3 ? 'center center' : ''">
     <div fxLayout="row">
-      <div fxFlex="" ></div>
-      <div class="container">
+      <div fxFlex="" *ngIf="currentLayoutObj.layout1"></div>
+      <div [class.container]="currentLayoutObj.layout1">
         <ng-content></ng-content>
       </div>
-      <div fxFlex=""></div>
+      <div fxFlex=""*ngIf="currentLayoutObj.layout1"></div>
     </div>
     <mat-divider></mat-divider>
     <app-footer></app-footer>
