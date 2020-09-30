@@ -17,12 +17,12 @@ import { SnackComponent } from './snack/snack.component';
     SectionCardComponent,
     ItemCardComponent,
     FooterComponent,
-    SnackComponent
+    SnackComponent,
   ],
   exports: [
     ShellComponent,
     NavbarComponent,
-    SectionCardComponent
+    SectionCardComponent,
   ],
   imports: [
     RouterModule,

@@ -16,6 +16,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatChipsModule} from "@angular/material/chips";
 
 // @ts-ignore
 @NgModule({

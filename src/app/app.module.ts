@@ -9,10 +9,13 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {LayoutModule} from './layout/layout.module';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import {environment} from '../environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     MdModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

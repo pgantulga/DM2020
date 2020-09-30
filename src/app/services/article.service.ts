@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from "@angular/fire/firestore";
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-  articleCollection = this.db.collection<any>('article', ref => ref.orderBy('createdAt', 'desc'));
+  articleCollection = this.db.collection<any>('articles' +
+    '', ref => ref.orderBy('createdAt', 'desc'));
   constructor(private db: AngularFirestore) { }
-  createArticle(formData, user) {
+  getAllArticles(): any {
+    return this.db.collection('articles', ref => ref.orderBy('createdAt', 'desc' )).valueChanges();
+  }
+  createArticle(formData, user): any {
     return  this.articleCollection.add({
       title: formData.title,
       content: formData.content,
@@ -27,11 +31,18 @@ export class ArticleService {
         console.log('something happened' + error);
       });
   }
-  saveArticle(formData, user, tagsArray, oldValue) {
+  saveArticle(formData, user, oldValue): any {
     return this.articleCollection.doc(oldValue.id).set({
       title: formData.title,
       content: formData.content,
       updatedAt: new Date()
     }, {merge: true});
+  }
+  getArticle(id): any {
+    return this.articleCollection.doc(id).valueChanges();
+  }
+  getArticleByTitle(title): any {
+    return this.db.collection('articles', ref => ref.orderBy('createAt', 'desc')
+      .where('title', '==', title)).valueChanges();
   }
 }

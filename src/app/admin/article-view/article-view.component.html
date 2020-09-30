@@ -1,0 +1,14 @@
+<div class="light-theme" *ngIf="article$ | async as article" fxLayout="column" style="height: 100%">
+  <div class="mat-app-background" fxLayout="column" fxFlex>
+    <mat-toolbar>
+      <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        Article detail
+        <button mat-flat-button color="accent" [routerLink]="['/admin/articles/'+article.id+'/edit']">Edit</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="article-view" >
+      <p class="mat-headline">{{ article.title}}</p>
+      <div [innerHTML]="article.content"></div>
+    </div>
+  </div>
+</div>

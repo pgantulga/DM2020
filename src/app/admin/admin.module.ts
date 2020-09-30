@@ -10,10 +10,22 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {QuillModule} from "ngx-quill";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "../shared/shared.module";
+import {ArticleListComponent} from "../layout/article-list/article-list.component";
+import { ArticleViewComponent } from './article-view/article-view.component';
+import { ImagesComponent } from './images/images.component';
+import { ImageAddComponent } from './image-add/image-add.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminArticleComponent, AdminAddArticleComponent],
+  declarations: [
+    AdminComponent,
+    AdminArticleComponent,
+    AdminAddArticleComponent,
+    ArticleListComponent,
+    ArticleViewComponent,
+    ImagesComponent,
+    ImageAddComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -22,7 +34,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     QuillModule.forRoot(),
     MatSlideToggleModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
+  ],
+  exports: [
+    ArticleListComponent
   ]
 })
 export class AdminModule { }

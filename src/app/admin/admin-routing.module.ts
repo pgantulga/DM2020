@@ -4,11 +4,13 @@ import {AdminComponent} from './admin/admin.component';
 import {AdminGuard} from '../services/admin-guard.service';
 import {AdminArticleComponent} from "./admin-article/admin-article.component";
 import {AdminAddArticleComponent} from "./admin-add-article/admin-add-article.component";
+import {ArticleViewComponent} from "./article-view/article-view.component";
+import {ImagesComponent} from "./images/images.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent,
+    component: AdminArticleComponent,
     canActivate: [AdminGuard]
   },
   {
@@ -17,8 +19,23 @@ const routes: Routes = [
     canActivate: [AdminGuard]
   },
   {
+    path: 'articles/:id',
+    component: ArticleViewComponent,
+    canActivate: [AdminGuard]
+  },
+  {
     path: 'create-article',
     component: AdminAddArticleComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'articles/:id/edit',
+    component: AdminAddArticleComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'images',
+    component: ImagesComponent,
     canActivate: [AdminGuard]
   }
 ];

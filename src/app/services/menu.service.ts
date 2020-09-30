@@ -82,6 +82,10 @@ export class MenuService {
     {
       name: 'Agenda',
       link: ''
-    }
+    },
+      {
+        name: 'Images',
+        link: '/admin/images'
+      }
   ];
 }

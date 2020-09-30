@@ -22,6 +22,20 @@
 }
 .item-card-container {
   height: 100%;
-  background-color: red;
-  padding: 16px;
+  background-color: rgba(0,0,0,0.4);
+  padding: 20px;
+}
+mat-grid-tile {
+  //background-color: red;
+}
+mat-grid-tile:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.5);
+}
+.tile-cover {
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  //width: 100%;
+  object-fit: cover;
 }

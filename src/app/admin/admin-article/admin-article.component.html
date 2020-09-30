@@ -8,5 +8,10 @@
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
+    <div class="article-list-container" *ngIf="articles | async as articles">
+      <article-list *ngFor="let item of articles; last as last" [item]="item">
+        <mat-divider *ngIf="!last"></mat-divider>
+      </article-list>
+    </div>
   </div>
 </div>
