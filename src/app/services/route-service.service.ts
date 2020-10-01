@@ -1,5 +1,9 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
+export interface PageDetails {
+  title: string,
+  subtitle: string
+}
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +44,20 @@ export class RouteService {
         layout3: false
       };
     }
-  }}
+  }
+  getHeaderDetails(route): any {
+    console.log(route);
+    switch (route) {
+      case 'home':
+        return {
+          title: 'Home page',
+          subtitle: 'Oct 30, 2020'
+        };
+      case 'agenda':
+        return {
+          title: 'Agenda',
+          subtitle: 'Oct 30, 2020'
+        }
+    }
+  }
+}

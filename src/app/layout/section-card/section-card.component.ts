@@ -4,6 +4,8 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {map, shareReplay} from "rxjs/operators";
 import {ArticleService} from "../../services/article.service";
 import {ImageService} from "../../services/image.service";
+import {MatDialog} from "@angular/material/dialog";
+import {DefaultDialogComponent} from "../default-dialog/default-dialog.component";
 
 @Component({
   selector: 'app-section-card',
@@ -17,8 +19,12 @@ export class SectionCardComponent implements OnInit {
       map( result => result.matches),
       shareReplay()
     );
-
-  constructor(private breakpointObserver: BreakpointObserver, public articleService: ArticleService, public imageService: ImageService) { }
+  dialogWidth: string;
+  constructor(private breakpointObserver: BreakpointObserver,
+              public articleService: ArticleService,
+              public imageService: ImageService,
+              public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.events = [
@@ -38,14 +44,18 @@ export class SectionCardComponent implements OnInit {
         image: this.imageService.getImage('home_exhibition')
       }
     ];
-   // this.getImage('home_workshop');
+    this.isHandset$.subscribe(res => {
+      this.dialogWidth = res ? '350px' : '700px';
+    });
   }
-  // async getImage(docId)  {
-  //    const result = this.imageService.getImage(docId);
-  //    console.log(result)
-  // }
-  // async getImage(docId): Promise<any> {
-  //   const obj =  await this.imageService.getImage(docId);
-  //   return obj.embedUrl;
-  // }
+  openDialog(data): any {
+    const dialogRef = this.dialog.open(DefaultDialogComponent, {
+      minWidth: this.dialogWidth,
+      data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result: ${result}');
+    });
+  }
+
 }

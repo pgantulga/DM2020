@@ -1,0 +1,36 @@
+.dialog-header-container {
+  position: relative;
+  background-color: red;
+  height: 300px;
+  overflow: hidden;
+}
+.dialog-header-image {
+  position: relative;
+  width: 100%;
+  top: -50%
+}
+@media only screen and (max-width: 960px) {
+  .dialog-header-container {
+    height: 200px;
+  }
+  .dialog-header-image {
+    height: 200px;
+    position: relative;
+    top: calc(100% - 200px)
+    //left: -30%
+  }
+}
+.dialog-header-title {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;height: 100%;padding: 0 0 16px 16px
+}
+::ng-deep.mat-dialog-container {
+  min-width: 350px;
+  padding: 0 !important;
+}
+.mat-dialog-content {
+  margin: 0;
+  padding: 16px;
+}

@@ -7,27 +7,13 @@
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
 </app-navbar>
-<div class="wrapper" *ngIf="currentLayoutObj.layout1" [ngSwitch]="currentRoute" >
-  <ng-container *ngSwitchCase="'home'">
-    <div class="gradient"></div>
-    <video autoplay loop width="100%" #videoPlayer [muted]="true" >
-      <source [src]="'../../../assets/video_last.mp4'" type="video/mp4">
-      browser no supported
-    </video>
+<div class="wrapper" *ngIf="currentLayoutObj.layout1" >
+  <ng-container [ngSwitch]="currentRoute">
+    <app-video-wrapper *ngSwitchCase="'home'"></app-video-wrapper>
+    <app-image-wrapper *ngSwitchDefault [route]="currentRoute">
+    </app-image-wrapper>
   </ng-container>
-  <ng-container *ngSwitchDefault>
-    <div class="gradient-image" fxLayout="row">
-      <div fxFlex=""></div>
-      <div class="container" fxLayout="row">
-        <div fxLayout="column" fxLayoutAlign="end start" fxFlex="">
-          <p class="mat-body-1">Date and time</p>
-          <p class="mat-display-2">Conference agenda</p>
-        </div>
-      </div>
-      <div fxFlex=""></div>
-    </div>
-    <img class="image-wrapper" [src]="'../../../assets/agenda_cover.jpg'" alt="header-wrapper">
-  </ng-container>
+
 </div>
 <mat-sidenav-container [class.color-background]="currentLayoutObj.layout3" >
   <mat-sidenav #drawer class="mat-elevation-z3"

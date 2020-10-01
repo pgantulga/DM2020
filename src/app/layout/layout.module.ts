@@ -9,6 +9,9 @@ import {RouterModule} from "@angular/router";
 import { ItemCardComponent } from './item-card/item-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { SnackComponent } from './snack/snack.component';
+import { DefaultDialogComponent } from './default-dialog/default-dialog.component';
+import { ImageWrapperComponent } from './image-wrapper/image-wrapper.component';
+import { VideoWrapperComponent } from './video-wrapper/video-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { SnackComponent } from './snack/snack.component';
     ItemCardComponent,
     FooterComponent,
     SnackComponent,
+    DefaultDialogComponent,
+    ImageWrapperComponent,
+    VideoWrapperComponent,
   ],
   exports: [
     ShellComponent,
