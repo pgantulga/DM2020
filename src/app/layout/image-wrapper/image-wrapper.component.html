@@ -3,11 +3,14 @@
     <div fxFlex=""></div>
     <div class="container" fxLayout="row">
       <div fxLayout="column" fxLayoutAlign="end start" fxFlex="">
-        <p class="mat-body-1">{{currentRoute}}</p>
-<!--        <p class="mat-display-2">{{details?.title}}</p>-->
+        <p class="mat-body-1">{{details.subtitle}}</p>
+        <p class="mat-display-2">{{details?.title}}</p>
       </div>
     </div>
     <div fxFlex=""></div>
   </div>
-  <img class="image-wrapper" [src]="'../../../assets/agenda_cover.jpg'" alt="header-wrapper">
+  <ng-container *ngIf="details.img | async as img">
+    <img class="image-wrapper" [src]="img.embedUrl" alt="header-wrapper">
+
+  </ng-container>
 </ng-container>

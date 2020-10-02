@@ -23,6 +23,18 @@ const routes: Routes = [
     loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaModule),
   },
   {
+    path: 'registration',
+    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationModule)
+  },
+  {
+    path: 'exhibition',
+    loadChildren: () => import('./exhibition/exhibition.module').then(m => m.ExhibitionModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactModule)
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {filter, map, shareReplay} from 'rxjs/operators';
-import {NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {RouteService} from "../../services/route-service.service";
 import {MenuService} from "../../services/menu.service";
 
@@ -28,7 +28,6 @@ export class ShellComponent implements OnInit {
               public router: Router,
               public routeService: RouteService,
               public menuService: MenuService) {
-    this.getLayoutType(this.currentRoute);
   }
   ngOnInit(): void {
     this.router.events.pipe(
@@ -43,6 +42,9 @@ export class ShellComponent implements OnInit {
     this.currentLayoutObj = this.routeService.getLayout(currentRoute);
   }
   getSideMenu(route): any {
-    return (route === 'admin') ? this.menuService.adminMenu : this.menuService.sideNavMenu
+    return (route === 'admin') ? this.menuService.adminMenu : this.menuService.sideNavMenu;
+  }
+  close(close): any {
+    return (this.currentRoute === 'admin') ? null : close();
   }
 }

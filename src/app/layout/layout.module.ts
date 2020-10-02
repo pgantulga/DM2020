@@ -12,6 +12,7 @@ import { SnackComponent } from './snack/snack.component';
 import { DefaultDialogComponent } from './default-dialog/default-dialog.component';
 import { ImageWrapperComponent } from './image-wrapper/image-wrapper.component';
 import { VideoWrapperComponent } from './video-wrapper/video-wrapper.component';
+import { SponsorSectionComponent } from './sponsor-section/sponsor-section.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { VideoWrapperComponent } from './video-wrapper/video-wrapper.component';
     DefaultDialogComponent,
     ImageWrapperComponent,
     VideoWrapperComponent,
+    SponsorSectionComponent,
   ],
   exports: [
     ShellComponent,

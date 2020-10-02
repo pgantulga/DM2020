@@ -32,6 +32,10 @@ export class MenuService {
   ];
   public sideNavMenu: Menu [] = [
     {
+      name: 'Home',
+      link: 'home'
+    },
+    {
       name: 'Agenda',
       link: 'agenda'
     },
@@ -54,11 +58,11 @@ export class MenuService {
   ];
   public footerMenu: Menu [] = [
     {
-      name: 'Agenda',
+      name: 'Conference agenda',
       link: 'agenda'
     },
     {
-      name: 'Registration',
+      name: 'Forum registration',
       link: 'registration'
     },
     {
@@ -66,11 +70,11 @@ export class MenuService {
       link: 'exhibition'
     },
     {
-      name: 'About',
+      name: 'About conference',
       link: 'about'
     },
     {
-      name: 'Contact',
+      name: 'Contact us',
       link: 'contact'
     }
   ];
@@ -79,10 +83,10 @@ export class MenuService {
       name: 'Articles',
       link: '/admin/articles'
     },
-    {
-      name: 'Agenda',
-      link: ''
-    },
+    // {
+    //   name: 'Agenda',
+    //   link: ''
+    // },
       {
         name: 'Images',
         link: '/admin/images'

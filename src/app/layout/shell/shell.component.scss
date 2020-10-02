@@ -10,11 +10,16 @@ mat-sidenav-container {
   height: 100%;
 }
 mat-sidenav {
-  width: 250px
+  width: 250px;
+  position: absolute;
+  top: 0
 }
 .layout-two {
   .fullWidth {
     width: 100% ;
     height: 100vh;
   }
+}
+.side-nav-logo {
+  width: 120px;
 }

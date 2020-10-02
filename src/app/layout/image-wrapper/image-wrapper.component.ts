@@ -10,30 +10,27 @@ import {Observable} from "rxjs";
   styleUrls: ['./image-wrapper.component.scss']
 })
 export class ImageWrapperComponent implements OnInit {
-  // @Input() route: Observable<any>;
   currentRoute: any;
-  url: Observable<any>
+  @Input() route: any;
   details: {
     title: string,
-    subtitle: string
+    subtitle: string,
+    img: Observable<any>
   };
-  constructor(public routeService: RouteService, public router: Router, public route: ActivatedRoute) {
-    this.url = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)) as Observable<any>;
-    // .subscribe((e: any) => {
-    //   this.currentRoute =  this.routeService.getCurrentRoute(e.url);
-    //   this.details = this.routeService.getHeaderDetails(this.currentRoute);
-    // }
+  constructor(public routeService: RouteService, public router: Router) {
   }
 
   ngOnInit(): void {
-    this.url.pipe(
-      map((e: any) => this.routeService.getCurrentRoute(e.url))
-    ).subscribe(route => this.currentRoute = route);
-    this.route.url.subscribe(url => {
-      console.log(url);
-    });
-
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd))
+      .subscribe( (e: any) => {
+        this.currentRoute = this.routeService.getCurrentRoute(e.url);
+        this.details = this.routeService.getHeaderDetails(this.currentRoute);
+      });
+    this.details = this.routeService.getHeaderDetails(this.route);
+    this.details.img.subscribe(str => {
+      console.log(str);
+    })
   }
 
 
