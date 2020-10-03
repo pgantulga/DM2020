@@ -1,16 +1,16 @@
 <mat-divider></mat-divider>
-<div fxLayout="row" style="padding: 16px 0 16px 0">
+<div fxLayout="row">
   <div fxFlex></div>
   <div class="container footer-container" fxLayout="column" fxLayout.gt-sm="row">
-    <div class="footer-content" fxLayout="column" fxLayout.gt-sm="row">
+    <div class="footer-content" fxLayout="row">
       <div class="footer-title" fxFlex="" fxHide.xs="">
         <div fxLayout="column" fxLayoutAlign="start start" >
           <button mat-button class="homeButton" [routerLink]="['/home']">
-            <img src="../../../assets/Logo_white.png" alt="header_logo" class="toolbarLogo">
+            <img src="../../../assets/logo_white.png" alt="header_logo" class="toolbarLogo">
           </button>
           <div class="text" fxLayout="column" fxHide.xs="">
-            <p class="mat-title" style="margin: 0 0 8px 0">The 18th International Mining Investors' Forum</p>
-            <p class="mat-body-2">October 30, 2020</p>
+            <p class="mat-title" style="margin: 8px 0 8px 0; color: rgba(255,255,255,0.9)">The 18th International Mining Investors' Forum</p>
+            <p class="mat-body-2" style="font-weight: 600">October 30, 2020</p>
             <p class="mat-body-1">Shangri-La, Ulaanbaater</p>
             <p class="mat-body-1">Ulaanbaatar Mongolia</p>
           </div>
@@ -25,16 +25,9 @@
         </div>
       </div>
       <div fxFlex fxLayout="column" fxLayoutAlign="start start" class="text">
-        <p class="mat-subheading-2" fxHide.xs="">Contact us</p>
         <div class="contact-content" fxLayout="column">
-          <div fxLayout="row" style="height: 24px" >
-            <button mat-icon-button aria-label="facebook" onclick="location.href='https://www.facebook.com/'">
-              <i class="fab fa-facebook-f fa-2x" aria-hidden style="color: white"></i>
-            </button>
-            <button mat-icon-button aria-label="linkedin" onclick="location.href=''">
-              <i class="fab fa-twitter fa-2x" aria-hidden="true" style="color: white"></i>
-            </button>
-          </div>
+          <p class="mat-subheading-2" fxHide.xs="">Contact us</p>
+         <app-social></app-social>
         </div>
       </div>
     </div>

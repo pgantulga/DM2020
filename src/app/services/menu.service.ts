@@ -83,10 +83,14 @@ export class MenuService {
       name: 'Articles',
       link: '/admin/articles'
     },
-    // {
-    //   name: 'Agenda',
-    //   link: ''
-    // },
+    {
+      name: 'Agenda',
+      link: '/admin/agenda'
+    },
+      {
+        name: 'Speakers',
+        link: '/admin/speakers'
+      },
       {
         name: 'Images',
         link: '/admin/images'

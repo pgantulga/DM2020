@@ -17,6 +17,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatSelectModule} from '@angular/material/select';
 
 // @ts-ignore
 @NgModule({
@@ -37,7 +38,8 @@ import {MatChipsModule} from "@angular/material/chips";
     MatPaginatorModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 4000}},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'never'}}, MatSidenav]

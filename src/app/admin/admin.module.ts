@@ -15,6 +15,12 @@ import {ArticleListComponent} from "../layout/article-list/article-list.componen
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { ImagesComponent } from './images/images.component';
 import { ImageAddComponent } from './image-add/image-add.component';
+import { AdminAgendaComponent } from './admin-agenda/admin-agenda.component';
+import { AgendaItemAddComponent } from './agenda-item-add/agenda-item-add.component';
+import { AdminSpeakersComponent } from './admin-speakers/admin-speakers.component';
+import { SpeakerAddComponent } from './speaker-add/speaker-add.component';
+import {LayoutModule} from '../layout/layout.module';
+import {AgendaModule} from '../agenda/agenda.module';
 
 
 @NgModule({
@@ -25,7 +31,11 @@ import { ImageAddComponent } from './image-add/image-add.component';
     ArticleListComponent,
     ArticleViewComponent,
     ImagesComponent,
-    ImageAddComponent],
+    ImageAddComponent,
+    AdminAgendaComponent,
+    AgendaItemAddComponent,
+    AdminSpeakersComponent,
+    SpeakerAddComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -35,7 +45,9 @@ import { ImageAddComponent } from './image-add/image-add.component';
     MatSlideToggleModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    LayoutModule,
+    AgendaModule
   ],
   exports: [
     ArticleListComponent

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+  import {Component, Input, OnInit} from '@angular/core';
 import {RouteService} from "../../services/route-service.service";
 import {filter, map, switchMap} from "rxjs/operators";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
@@ -28,9 +28,9 @@ export class ImageWrapperComponent implements OnInit {
         this.details = this.routeService.getHeaderDetails(this.currentRoute);
       });
     this.details = this.routeService.getHeaderDetails(this.route);
-    this.details.img.subscribe(str => {
-      console.log(str);
-    })
+    // this.details.img.subscribe(str => {
+    //   console.log(str);
+    // });
   }
 
 

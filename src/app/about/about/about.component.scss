@@ -4,6 +4,12 @@ p {
 }
 .mat-display-1 {
 }
-.mat-headline {
 
+.article-view {
+  text-align: justify;
+  //padding: 16px;
+  .article-title {
+    margin-bottom: 16px !important;
+    text-transform: uppercase;
+  }
 }

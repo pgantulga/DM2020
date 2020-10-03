@@ -31,26 +31,33 @@ export class SectionCardComponent implements OnInit {
       {
         title: 'Conference',
         date: 'October 30, 2020',
-        image: this.imageService.getImage('home_conference')
+        image: this.imageService.getImage('home_conference'),
+        content: this.articleService.getArticle('9gTiS3DsUhcNtpC2vZQK'),
+        url: 'agenda'
       },
       {
         title: 'Workshops',
         date: 'October 1-30, 2020',
-        image: this.imageService.getImage('home_workshop')
+        image: this.imageService.getImage('home_workshop'),
+        content: this.articleService.getArticle('V9h8UuKjrPwMvXwubFIi'),
+        url: 'agenda'
       },
       {
         title: 'Exhibition',
         date: 'October 30, 2020',
-        image: this.imageService.getImage('home_exhibition')
+        image: this.imageService.getImage('home_exhibition'),
+        content: this.articleService.getArticle('jcitLm9SERHOWvbOT8A3'),
+        url: 'exhibition'
       }
     ];
     this.isHandset$.subscribe(res => {
-      this.dialogWidth = res ? '350px' : '700px';
+      this.dialogWidth = res ? '350px' : '850px';
     });
   }
   openDialog(data): any {
     const dialogRef = this.dialog.open(DefaultDialogComponent, {
-      minWidth: this.dialogWidth,
+      width: this.dialogWidth,
+      height: '70%',
       data
     });
     dialogRef.afterClosed().subscribe(result => {

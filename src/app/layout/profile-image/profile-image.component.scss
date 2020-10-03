@@ -1,0 +1,8 @@
+@import "src/styles/custom-theme";
+.account-icon {
+  //heig: scale(2);
+  height: 48px;
+  width: 48px;
+  font-size: 48px;
+  color: mat-color($DM-primary-dark, 300);
+}

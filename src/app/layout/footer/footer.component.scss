@@ -1,7 +1,7 @@
 @import "./src/app/layout/navbar/navbar.component";
 .footer-container {
   height: 300px;
-  padding: 36px 16px 0 16px;
+  padding: 36px 16px 36px 16px;
   .mat-title {
     line-height: 24px !important;
   }
@@ -23,5 +23,33 @@
     color: white;
     text-decoration: none;
     text-underline: none;
+  }
+}
+
+@media only screen and (max-width: 960px ) {
+  .footer-container {
+    min-height: 250px;
+    padding: 36px 16px 36px 16px;
+    .mat-title {
+      line-height: 24px !important;
+    }
+  }
+  .footer-title {
+    width: 250px;
+    .text {
+      padding: 8px 0 0 16px;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  .footer-content {
+    width: 100%;
+    padding: 0 16px 0 16px;
+    a {
+      color: white;
+      text-decoration: none;
+      text-underline: none;
+    }
   }
 }

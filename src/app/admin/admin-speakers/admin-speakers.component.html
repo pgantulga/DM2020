@@ -1,0 +1,18 @@
+<div class="light-theme" fxLayout="column" style="height: 100%">
+  <div class="mat-app-background" fxLayout="column" fxFlex>
+    <mat-toolbar>
+      <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        Speakers panel
+        <!--        <button mat-flat-button color="accent" [routerLink]="['/admin/articles/'+article.id+'/edit']">Edit</button>-->
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div fxLayout="column" class="speaker-panel-container">
+      <button fxFlex="" mat-flat-button color="accent" (click)="openDialog($event)">Add speaker</button>
+      <div *ngIf="speakers | async as speakers">
+        <div *ngFor="let item of speakers">
+          <app-speaker-list [item]="item"></app-speaker-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

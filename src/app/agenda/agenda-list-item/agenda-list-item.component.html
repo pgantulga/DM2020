@@ -1,0 +1,8 @@
+<div fxLayout="row" class="agenda-list-container" (click)="openDialog($event)">
+  <div class="agenda-type discussion" [class.discussion]="item.type === 'discussion'" [class.presentation]="item.type === 'presentation'" [class.social]="item.type === 'social'"></div>
+  <div class="agenda-content" fxLayout="column">
+    <p class="mat-caption">{{item.start}} - {{item.end}}</p>
+    <p class="mat-title">{{item.title}}</p>
+    <p class="mat-body-2">Speaker</p>
+  </div>
+</div>

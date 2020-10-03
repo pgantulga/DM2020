@@ -26,8 +26,11 @@ export class ShellComponent implements OnInit {
   currentRoute: string;
   constructor(public breakpointObserver: BreakpointObserver,
               public router: Router,
+              public route: ActivatedRoute,
               public routeService: RouteService,
               public menuService: MenuService) {
+    this.getLayoutType(this.currentRoute);
+
   }
   ngOnInit(): void {
     this.router.events.pipe(

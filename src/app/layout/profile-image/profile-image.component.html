@@ -1,0 +1,7 @@
+<div *ngIf="item.image else icon"></div>
+<ng-template #icon>
+
+  <div style="" fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon class="account-icon">account_circle</mat-icon>
+  </div>
+</ng-template>

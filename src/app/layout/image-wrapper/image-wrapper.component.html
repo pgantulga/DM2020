@@ -2,15 +2,17 @@
   <div class="gradient-image" fxLayout="row">
     <div fxFlex=""></div>
     <div class="container" fxLayout="row">
-      <div fxLayout="column" fxLayoutAlign="end start" fxFlex="">
-        <p class="mat-body-1">{{details.subtitle}}</p>
+      <div fxLayout="column" fxLayoutAlign="end start" fxFlex="" >
+        <p class="mat-body-1">{{details?.subtitle}}</p>
         <p class="mat-display-2">{{details?.title}}</p>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="end end">
+        <app-social></app-social>
       </div>
     </div>
     <div fxFlex=""></div>
   </div>
-  <ng-container *ngIf="details.img | async as img">
+  <ng-container *ngIf="details?.img | async as img">
     <img class="image-wrapper" [src]="img.embedUrl" alt="header-wrapper">
-
   </ng-container>
 </ng-container>

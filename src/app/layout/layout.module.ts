@@ -13,6 +13,9 @@ import { DefaultDialogComponent } from './default-dialog/default-dialog.componen
 import { ImageWrapperComponent } from './image-wrapper/image-wrapper.component';
 import { VideoWrapperComponent } from './video-wrapper/video-wrapper.component';
 import { SponsorSectionComponent } from './sponsor-section/sponsor-section.component';
+import { SocialComponent } from './social/social.component';
+import { SpeakerListComponent } from './speaker-list/speaker-list.component';
+import { ProfileImageComponent } from './profile-image/profile-image.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,15 @@ import { SponsorSectionComponent } from './sponsor-section/sponsor-section.compo
     ImageWrapperComponent,
     VideoWrapperComponent,
     SponsorSectionComponent,
+    SocialComponent,
+    SpeakerListComponent,
+    ProfileImageComponent,
   ],
   exports: [
     ShellComponent,
     NavbarComponent,
     SectionCardComponent,
+    SpeakerListComponent,
   ],
   imports: [
     RouterModule,

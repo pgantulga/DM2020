@@ -13,12 +13,9 @@
 
 
 .section-card-title {
-  width: 250px;
+  width: 200px;
   //background-color: green;
 
-
-}
-.section-card-content {
 
 }
 .item-card-container {
@@ -43,4 +40,12 @@ mat-grid-tile:hover {
   z-index: -1;
   //width: 100%;
   object-fit: cover;
+}
+
+@media only screen and (max-width: 1920px ) and ( min-width: 1280px){
+  .section-card-title {
+    width: 300px;
+    //background-color: green;
+
+  }
 }

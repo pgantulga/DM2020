@@ -1,0 +1,17 @@
+<div class="light-theme" fxLayout="column" style="height: 100%">
+  <div class="mat-app-background" fxLayout="column" fxFlex>
+    <mat-toolbar>
+      <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        Agenda panel
+<!--        <button mat-flat-button color="accent" [routerLink]="['/admin/articles/'+article.id+'/edit']">Edit</button>-->
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div fxLayout="column" class="agenda-panel-container">
+      <button fxFlex="" mat-flat-button color="accent" (click)="openDialog($event)">Add item</button>
+      <button fxFlex="" mat-flat-button color="primary">Add Session</button>
+    </div>
+    <div *ngIf="items | async as items">
+      <app-agenda-list-item *ngFor="let item of items" [item]="item"></app-agenda-list-item>
+    </div>
+  </div>
+</div>

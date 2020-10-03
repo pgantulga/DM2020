@@ -1,7 +1,12 @@
 <ng-container>
   <div class="gradient"></div>
-  <video autoplay loop width="100%" #videoPlayer [muted]="true" >
+  <video autoplay loop width="100%" #videoPlayer [muted]="true" id="BgVideo" playsinline>
     <source [src]="'../../../assets/video_last.mp4'" type="video/mp4">
     browser no supported
   </video>
 </ng-container>
+<script>
+    const bgvideo = document.getElementById("BgVideo");
+    bgvideo.muted = true;
+    bgvideo.play();
+</script>

@@ -1,48 +1,49 @@
-<ng-container *ngIf="currentRoute as route">
-  <mat-sidenav-container [class.color-background]="currentLayoutObj.layout3" >
-    <mat-sidenav #drawer class="mat-elevation-z3"
-                 [attr.role]="(currentRoute === 'admin') ? 'directory' : 'navigation'"
-                 [opened]="(currentRoute === 'admin') && !(isHandset$ | async)"
-                 [mode]="(currentRoute === 'admin') ? 'side' : 'over'">
-      <div style="width: 100%; padding: 16px 0 0 16px" fxLayout="column" fxLayoutAlign="center start">
-        <img src="../../../assets/Logo_white.png" alt="header_logo" class="side-nav-logo">
-      </div>
-      <mat-nav-list fxLayout="column" *ngIf="currentRoute !== 'admin'">
-        <a mat-list-item *ngFor="let item of sideMenu; last as last" routerLink="{{item.link}}" (click)="drawer.close()">
-          {{item.name}}
-          <mat-divider *ngIf="!last"></mat-divider>
-        </a>
-      </mat-nav-list>
-      <mat-nav-list fxLayout="column" *ngIf="currentRoute === 'admin'">
-        <a mat-list-item *ngFor="let item of sideMenu; last as last" routerLink="{{item.link}}">
-          {{item.name}}
-          <mat-divider *ngIf="!last"></mat-divider>
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content fxLayout="column" [fxLayoutAlign]="currentLayoutObj.layout3 ? 'center center' : ''">
-      <app-navbar *ngIf="currentLayoutObj.layout1">
-        <button type="button"
-                aria-label="Toggle sidenav"
-                mat-icon-button
-                (click)="drawer.toggle()"
-                *ngIf="(isHandset$ | async) && (!currentLayoutObj.layout2)">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-      </app-navbar>
-      <div class="wrapper" style="position: relative" *ngIf="currentLayoutObj.layout1">
-        <app-video-wrapper *ngIf="route === 'home'"></app-video-wrapper>
-        <app-image-wrapper *ngIf="(route !== 'home') " [route]="route"></app-image-wrapper>
-      </div>
-      <div fxLayout="row" [class.layout-two]="currentLayoutObj.layout2">
-        <div fxFlex="" *ngIf="currentLayoutObj.layout1"></div>
-        <div [class.container]="currentLayoutObj.layout1" class="fullWidth">
-          <ng-content></ng-content>
+<mat-sidenav-container [class.color-background]="currentLayoutObj?.layout3">
+  <mat-sidenav #drawer class="mat-elevation-z3"
+               [attr.role]="(currentRoute === 'admin') ? 'directory' : 'navigation'"
+               [opened]="(currentRoute === 'admin') && !(isHandset$ | async)"
+               [mode]="(currentRoute === 'admin') ? 'side' : 'over'">
+    <div style="width: 100%; padding: 16px 0 0 16px" fxLayout="column" fxLayoutAlign="center start">
+      <img src="../../../assets/logo_white.png" alt="header_logo" class="side-nav-logo">
+    </div>
+    <mat-nav-list fxLayout="column" *ngIf="currentRoute !== 'admin'">
+      <a mat-list-item *ngFor="let item of sideMenu; last as last" routerLink="{{item.link}}" (click)="drawer.close()">
+        {{item.name}}
+        <mat-divider *ngIf="!last"></mat-divider>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list fxLayout="column" *ngIf="currentRoute === 'admin'">
+      <a mat-list-item *ngFor="let item of sideMenu; last as last" routerLink="{{item.link}}">
+        {{item.name}}
+        <mat-divider *ngIf="!last"></mat-divider>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content fxLayout="column" [fxLayoutAlign]="currentLayoutObj?.layout3 ? 'center center' : ''">
+    <app-navbar *ngIf="currentLayoutObj.layout1">
+      <button type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="(isHandset$ | async) && (!currentLayoutObj.layout2)">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </app-navbar>
+    <div class="wrapper" *ngIf="currentLayoutObj.layout1">
+      <app-video-wrapper *ngIf="currentRoute === 'home'"></app-video-wrapper>
+      <app-image-wrapper *ngIf="(currentRoute !== 'home') " [route]="currentRoute"></app-image-wrapper>
+    </div>
+    <div fxLayout="row" [class.layout-two]="currentLayoutObj.layout2">
+      <div fxFlex="" *ngIf="currentLayoutObj.layout1"></div>
+      <div [class.container]="currentLayoutObj.layout1" class="fullWidth">
+        <ng-content></ng-content>
+        <div style="width: 100%">
+          <app-footer *ngIf="currentLayoutObj.layout1"></app-footer>
         </div>
-        <div fxFlex="" *ngIf="currentLayoutObj.layout1"></div>
       </div>
-      <app-footer *ngIf="currentLayoutObj.layout1"></app-footer>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</ng-container>
+      <div fxFlex="" *ngIf="currentLayoutObj.layout1"></div>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
 

@@ -16,7 +16,7 @@ export class RouteService {
     if (url.includes('home')) {
       return 'home';
     }
-    if (url.includes('agenda')) {
+    if (url.includes('agenda') && (!url.includes('admin'))) {
       return 'agenda';
     }
     if (url.includes('login') || url.includes('register') || url.includes('welcome')) {
@@ -89,7 +89,7 @@ export class RouteService {
         return {
           title: 'About forum',
           subtitle: 'The 18th International Mining Investors Forum',
-          img: this.imageService.getImage('contact_header')
+          img: this.imageService.getImage('about_header')
         };
       case 'contact':
         return  {

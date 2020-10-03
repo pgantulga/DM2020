@@ -5,8 +5,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class ArticleService {
-  articleCollection = this.db.collection<any>('articles' +
-    '', ref => ref.orderBy('createdAt', 'desc'));
+  articleCollection = this.db.collection<any>('articles', ref => ref.orderBy('createdAt', 'desc'));
   constructor(private db: AngularFirestore) { }
   getAllArticles(): any {
     return this.db.collection('articles', ref => ref.orderBy('createdAt', 'desc' )).valueChanges();

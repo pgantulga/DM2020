@@ -1,8 +1,10 @@
 <div fxLayout="row" style="min-height: 1000px">
   <div fxFlex=""></div>
-  <div class="container" style="height: 100%; padding: 64px 16px 0 16px;" fxLayout="column" *ngIf="article | async as article">
-    <p class="mat-headline">{{article.title}}</p>
-    <div [innerHTML]="article.content"></div>
+  <div class="container" style="height: 100%; padding: 32px 0 0 0;" fxLayout="column" *ngIf="article | async as article">
+    <div class="article-view">
+      <p class="mat-headline article-title">{{article.title}}</p>
+      <div [innerHTML]="article.content"></div>
+    </div>
   </div>
   <div fxFlex=""></div>
 </div>
