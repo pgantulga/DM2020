@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-session',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./session.component.scss']
 })
 export class SessionComponent implements OnInit {
-
+  @Input() item: any;
   constructor() { }
 
   ngOnInit(): void {

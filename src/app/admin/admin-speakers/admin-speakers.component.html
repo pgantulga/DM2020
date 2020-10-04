@@ -9,9 +9,7 @@
     <div fxLayout="column" class="speaker-panel-container">
       <button fxFlex="" mat-flat-button color="accent" (click)="openDialog($event)">Add speaker</button>
       <div *ngIf="speakers | async as speakers">
-        <div *ngFor="let item of speakers">
-          <app-speaker-list [item]="item"></app-speaker-list>
-        </div>
+          <app-speaker-list *ngFor="let item of speakers" [item]="item" [route]="'admin'"></app-speaker-list>
       </div>
     </div>
   </div>

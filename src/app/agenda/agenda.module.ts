@@ -13,7 +13,8 @@ import { AgendaDialogComponent } from './agenda-dialog/agenda-dialog.component';
 @NgModule({
   declarations: [AgendaComponent, AgendaListItemComponent, SessionComponent, AgendaDialogComponent],
   exports: [
-    AgendaListItemComponent
+    AgendaListItemComponent,
+    SessionComponent
   ],
   imports: [
     CommonModule,

@@ -21,6 +21,7 @@ import { AdminSpeakersComponent } from './admin-speakers/admin-speakers.componen
 import { SpeakerAddComponent } from './speaker-add/speaker-add.component';
 import {LayoutModule} from '../layout/layout.module';
 import {AgendaModule} from '../agenda/agenda.module';
+import { SessionAddComponent } from './session-add/session-add.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {AgendaModule} from '../agenda/agenda.module';
     AdminAgendaComponent,
     AgendaItemAddComponent,
     AdminSpeakersComponent,
-    SpeakerAddComponent],
+    SpeakerAddComponent,
+    SessionAddComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -23,4 +23,8 @@ export class SpeakerService {
   getSpeakers(): Observable<any> {
     return this.speakerCollection.valueChanges();
   }
+  updateSpeaker(item): any {
+    console.log(item);
+    return this.speakerCollection.doc(item.id).set(item, {merge: true});
+  }
 }

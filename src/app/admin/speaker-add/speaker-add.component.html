@@ -29,5 +29,6 @@
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data"  *ngIf="update">Update</button>
+  <button mat-button [mat-dialog-close]="data"  *ngIf="!update">Create</button>
 </div>

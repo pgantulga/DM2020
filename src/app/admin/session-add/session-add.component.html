@@ -1,22 +1,14 @@
-<h1 mat-dialog-title>Add item</h1>
+<h1 mat-dialog-title>Add session</h1>
 <div mat-dialog-content>
   <div fxLayout="column">
     <mat-form-field fxFlex="">
       <mat-label>Title</mat-label>
       <input matInput [(ngModel)]="data.title">
     </mat-form-field>
-    <mat-form-field appearance="fill" fxFlex="">
-      <mat-label>Type</mat-label>
-      <mat-select [(value)]="data.type">
-        <mat-option *ngFor="let type of types" [value]="type">
-          {{type}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field fxFlex="">
-      <mat-label>Description</mat-label>
-      <input matInput [(ngModel)]="data.description">
-    </mat-form-field>
+<!--    <mat-form-field fxFlex="">-->
+<!--      <mat-label>Description</mat-label>-->
+<!--      <input matInput [(ngModel)]="data.description">-->
+<!--    </mat-form-field>-->
     <div fxLayout="row" fxFlex="">
       <mat-form-field>
         <mat-label>Start time</mat-label>
@@ -28,26 +20,22 @@
       </mat-form-field>
     </div>
     <mat-form-field appearance="fill" fxFlex="">
-      <mat-label>Presenter / Moderator</mat-label>
-      <mat-select [(value)]="data.owner">
-        <mat-option *ngFor="let person of peoples" [value]="person">
+      <mat-label>Chair</mat-label>
+      <mat-select [(value)]="data.chair">
+        <mat-option *ngFor="let person of people" [value]="person">
           {{person.firstName}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill" fxFlex="">
-      <mat-label>Session</mat-label>
-      <mat-select [(value)]="data.session">
-        <mat-option *ngFor="let session of sessions" [value]="session">
-          {{session}}
-        </mat-option>
-      </mat-select>
+      <mat-label>Number</mat-label>
+      <input matInput [(ngModel)]="data.number">
     </mat-form-field>
   </div>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="data"  *ngIf="update">Update</button>
+  <button mat-button [mat-dialog-close]="data"  *ngIf="update">Update</button>
   <button mat-button [mat-dialog-close]="data"  *ngIf="!update">Create</button>
 
 </div>

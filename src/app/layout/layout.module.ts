@@ -16,6 +16,7 @@ import { SponsorSectionComponent } from './sponsor-section/sponsor-section.compo
 import { SocialComponent } from './social/social.component';
 import { SpeakerListComponent } from './speaker-list/speaker-list.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
+import { SpeakerComponent } from './speaker/speaker.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
     SocialComponent,
     SpeakerListComponent,
     ProfileImageComponent,
+    SpeakerComponent,
   ],
   exports: [
     ShellComponent,

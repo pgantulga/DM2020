@@ -7,6 +7,7 @@ import {AgendaService} from '../../services/agenda.service';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {AgendaItemAddComponent} from '../agenda-item-add/agenda-item-add.component';
+import {SessionAddComponent} from '../session-add/session-add.component';
 
 @Component({
   selector: 'app-admin-agenda',
@@ -21,6 +22,7 @@ export class AdminAgendaComponent implements OnInit {
     );
   dialogWidth: string;
   items: Observable<any>;
+  sessions: Observable<any>;
   constructor(private breakpointObserver: BreakpointObserver,
               public agendaService: AgendaService,
               public dialog: MatDialog) { }
@@ -28,7 +30,8 @@ export class AdminAgendaComponent implements OnInit {
     this.isHandset$.subscribe(res => {
       this.dialogWidth = res ? '350px' : '850px';
     });
-    this.items = this.agendaService.getItems()
+    this.items = this.agendaService.getItems();
+    this.sessions = this.agendaService.getSessions();
   }
   openDialog(data): any {
     const dialogRef = this.dialog.open(AgendaItemAddComponent, {
@@ -39,6 +42,17 @@ export class AdminAgendaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.agendaService.addItem(result).then(() => {
         console.log('item added');
+      });
+    });
+  }
+  addSession(ev): any {
+    const dialogRef = this.dialog.open(SessionAddComponent, {
+      width: this.dialogWidth,
+      height: '70%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.agendaService.addSession(result).then(() => {
+        console.log('session added');
       });
     });
   }

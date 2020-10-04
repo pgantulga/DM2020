@@ -1,4 +1,7 @@
-<div fxLayout="row" class="agenda-list-container" (click)="openDialog($event)">
+<div fxLayout="row" class="agenda-list-container" (click)="openDialog(item)">
+<!--  <button mat-icon-button (click)="edit(item)">-->
+<!--    <mat-icon>edit</mat-icon>-->
+<!--  </button>-->
   <div class="agenda-type discussion" [class.discussion]="item.type === 'discussion'" [class.presentation]="item.type === 'presentation'" [class.social]="item.type === 'social'"></div>
   <div class="agenda-content" fxLayout="column">
     <p class="mat-caption">{{item.start}} - {{item.end}}</p>

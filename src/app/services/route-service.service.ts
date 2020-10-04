@@ -60,7 +60,6 @@ export class RouteService {
     }
   }
   getHeaderDetails(route): any {
-    console.log(route);
     switch (route) {
       case 'home':
         return {

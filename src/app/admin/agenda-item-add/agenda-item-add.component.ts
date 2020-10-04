@@ -17,35 +17,34 @@ export interface AgendaItem {
   styleUrls: ['./agenda-item-add.component.scss']
 })
 export class AgendaItemAddComponent implements OnInit {
-   data: AgendaItem = {
-    title: '',
-    start: '',
-    end: '',
-    owner: null,
-    type: null,
-    session: null,
-    description: null,
-     people: ''
-  };
   types = [
     'discussion',
     'presentation',
     'social'
   ];
-  // peoples = [
-  //   {
-  //     firstName: 'Bilguun',
-  //     LastName: 'Ankhbayar',
-  //     id: 1
-  //   },
-  // ];
-  peoples: any
+  peoples: any;
   sessions = [
     1, 2, 3, 4
   ];
-  constructor(public dialogRef: MatDialogRef<AgendaItemAddComponent>, public speakerService: SpeakerService) { }
-
+  update = false;
+  constructor(public dialogRef: MatDialogRef<AgendaItemAddComponent>,
+              public speakerService: SpeakerService,
+              @Inject(MAT_DIALOG_DATA) public data: AgendaItem) { }
   ngOnInit(): void {
+    if (!this.data) {
+      this.data = {
+        title: '',
+        start: '',
+        end: '',
+        owner: null,
+        type: null,
+        session: null,
+        description: null,
+        people: ''
+      };
+    } else {
+      this.update = true;
+    }
     this.speakerService.getSpeakers()
       .subscribe( items => {
         this.peoples = items;
@@ -53,7 +52,7 @@ export class AgendaItemAddComponent implements OnInit {
   }
   onNoClick(): void {
     this.dialogRef.close();
-  }
+  };
 
 }
 

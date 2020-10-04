@@ -1,4 +1,4 @@
-<div fxLayout="row" class="speaker-list" fxLayoutAlign="start center">
+<div fxLayout="row" class="speaker-list" fxLayoutAlign="start center" (click)="openDialog(item)">
   <app-profile-image [item]="item"></app-profile-image>
   <div fxLayout="column">
     <p class="mat-title">{{item.firstName}}</p>
