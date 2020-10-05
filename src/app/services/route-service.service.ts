@@ -68,7 +68,7 @@ export class RouteService {
         };
       case 'agenda':
         return {
-          title: 'Agenda',
+          title: 'Tentative agenda',
           subtitle: 'Oct 30, 2020',
           img: this.imageService.getImage('agenda_header')
         };

@@ -22,7 +22,7 @@ export class SessionAddComponent implements OnInit {
         start: '',
         end: '',
         chair: null,
-        number: null
+        number: 0
       };
     } else {
       this.update = true;

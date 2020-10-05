@@ -8,6 +8,8 @@ import {MdModule} from '../md/md.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { SessionComponent } from './session/session.component';
 import { AgendaDialogComponent } from './agenda-dialog/agenda-dialog.component';
+import {SharedModule} from '../shared/shared.module';
+import {LayoutModule} from '../layout/layout.module';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { AgendaDialogComponent } from './agenda-dialog/agenda-dialog.component';
     CommonModule,
     AgendaRoutingModule,
     MdModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule,
+    LayoutModule,
   ]
 })
 export class AgendaModule { }

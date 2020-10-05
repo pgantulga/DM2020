@@ -1,9 +1,64 @@
 <ng-container>
-  <div class="gradient"></div>
+  <div class="gradient" fxLayout="row">
+    <div fxFlex=""></div>
+    <div class="container" fxLayout="column" fxLayoutAlign="center start" fxLayout.gt-sm="row">
+      <div fxLayout="column" fxLayoutAlign="end end" class="video-content-container">
+          <div fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="start center" style="margin-bottom: 8px">
+              <mat-icon style="margin:0 4px 4px 0">location_on</mat-icon>
+              <p class="mat-primary mat-headline">
+                Shangri-La, Ulaanbaatar</p>
+              <mat-icon style="margin:0 4px 4px 8px" fxHide.xs="">calendar_today</mat-icon>
+              <p class="mat-headline" fxHide.xs="" >
+                October 30, 2020</p>
+            </div>
+            <p class="mat-display-2 mat-primary" style="margin-bottom: 8px;">
+              The 18th International Mining Investors' Forum
+            </p>
+            <p class="mat-display-1">Mining: The Road to Recovery</p>
+            <!--          <div fxLayout="row" fxLayoutAlign="start center" style="margin-bottom: 8px;padding-left: 16px">-->
+            <!--            <div fxLayout="column">-->
+            <!--              <p class="mat-primary mat-headline">Shangri-La, Ulaanbaatar</p>-->
+            <!--              <p class="mat-headline mat-primary">Ulaanbaatar Mongolia</p>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <div fxLayout="row">
+              <button mat-flat-button class="video-wrapper-button" color="accent" fxFlex.xs style="text-transform: uppercase"  [routerLink]="['/agenda']">Agenda</button>
+              <button mat-flat-button class="video-wrapper-button-border" style="text-transform: uppercase" fxFlex.xs [routerLink]="['/registration']" fxHide.xs="">Registration</button>
+            </div>
+          </div>
+      </div>
+      <div fxFlex="" style="background-color: #4285f4"></div>
+    </div>
+    <div fxFlex=""></div>
+
+  </div>
   <video autoplay loop width="100%" #videoPlayer [muted]="true" id="BgVideo" playsinline>
     <source [src]="'../../../assets/video_last.mp4'" type="video/mp4">
     browser no supported
   </video>
+<!--  <div class="main-content" style="position: relative" fxLayoutAlign="row">-->
+<!--    <div class="container" fxLayout="column" fxLayoutAlign="center start" fxLayout.gt-sm="row">-->
+<!--      <div fxLayout="column" fxLayoutAlign="space-around start" style="height: 100%">-->
+<!--        <div fxLayout="column">-->
+<!--          <p class="mat-display-2 mat-primary" style="margin-bottom: 8px;padding-left: 16px">-->
+<!--            October 30, 2020-->
+<!--          </p>-->
+<!--          <div fxLayout="row" fxLayoutAlign="start center" style="margin-bottom: 8px;padding-left: 16px">-->
+<!--            <div fxLayout="column">-->
+<!--              <p class="mat-primary mat-headline">Shangri-La, Ulaanbaatar</p>-->
+<!--              <p class="mat-headline mat-primary">Ulaanbaatar Mongolia</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div fxLayout="row" style="margin-top: 32px;padding-left: 16px">-->
+<!--            <button mat-flat-button color="accent" style="text-transform: uppercase" fxFlex="" [routerLink]="['/about']">Welcome note</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div fxFlex=""></div>-->
+<!--    </div>-->
+<!--  </div>-->
+
 </ng-container>
 <script>
     const bgvideo = document.getElementById("BgVideo");

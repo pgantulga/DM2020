@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {ArticleService} from '../../services/article.service';
 
 @Component({
   selector: 'app-contact',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-
-  constructor() { }
+  article: Observable<any>;
+  constructor(public articleService: ArticleService) { }
 
   ngOnInit(): void {
+    this.article = this.articleService.getArticle('bIKc3RCbVpfR5VcGF4Fu');
   }
 
 }

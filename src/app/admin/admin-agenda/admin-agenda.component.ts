@@ -22,7 +22,11 @@ export class AdminAgendaComponent implements OnInit {
     );
   dialogWidth: string;
   items: Observable<any>;
-  sessions: Observable<any>;
+  sessions: [
+    {
+      number: number
+    }
+  ];
   constructor(private breakpointObserver: BreakpointObserver,
               public agendaService: AgendaService,
               public dialog: MatDialog) { }
@@ -31,7 +35,8 @@ export class AdminAgendaComponent implements OnInit {
       this.dialogWidth = res ? '350px' : '850px';
     });
     this.items = this.agendaService.getItems();
-    this.sessions = this.agendaService.getSessions();
+    this.agendaService.getSessions()
+      .subscribe(items => this.sessions = items);
   }
   openDialog(data): any {
     const dialogRef = this.dialog.open(AgendaItemAddComponent, {
@@ -51,9 +56,11 @@ export class AdminAgendaComponent implements OnInit {
       height: '70%'
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.agendaService.addSession(result).then(() => {
-        console.log('session added');
-      });
+      if (result) {
+        this.agendaService.addSession(result).then(() => {
+          console.log('session added');
+        });
+      }
     });
   }
 

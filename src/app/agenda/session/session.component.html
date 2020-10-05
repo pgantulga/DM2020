@@ -1,8 +1,8 @@
 <div class="session-container" fxLayout.xs="column" fxLayout.gt-sm="row" >
   <div class="session-title" fxLayout="column" fxLayoutAlign="space-between start" >
     <div fxLayout="column">
-      <p class="mat-display-1">{{item.title}}</p>
-      <div class="mat-body-2 ">{{item.chair}}</div>
+      <p class="mat-headline">{{item.title}}</p>
+      <div class="mat-body-2 " *ngIf="item.chair">{{item.chair?.displayName}}, {{item.chair?.position}}</div>
     </div>
   </div>
   <div fxFlex>

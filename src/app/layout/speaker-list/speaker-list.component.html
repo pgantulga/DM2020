@@ -1,7 +1,7 @@
 <div fxLayout="row" class="speaker-list" fxLayoutAlign="start center" (click)="openDialog(item)">
   <app-profile-image [item]="item"></app-profile-image>
   <div fxLayout="column">
-    <p class="mat-title">{{item.firstName}}</p>
+    <p class="mat-title">{{item.displayName}}</p>
     <p class="mat-body-1">{{item.position}}</p>
   </div>
 </div>

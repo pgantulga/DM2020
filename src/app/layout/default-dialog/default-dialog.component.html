@@ -10,7 +10,7 @@
     </mat-dialog-content >
     <mat-dialog-actions align="end" >
       <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial >Go to page</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial [routerLink]="[data.url]">Go to page</button>
     </mat-dialog-actions>
 </ng-container>
 <ng-template #loading>

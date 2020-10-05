@@ -9,10 +9,14 @@
       <mat-label>Last name</mat-label>
       <input matInput [(ngModel)]="data.lastName">
     </mat-form-field>
+    <mat-form-field fxFlex="">
+      <mat-label>Display name</mat-label>
+      <input matInput [(ngModel)]="data.displayName">
+    </mat-form-field>
     <mat-form-field appearance="fill" fxFlex="">
       <mat-label>Honor</mat-label>
       <mat-select [(value)]="data.honor">
-        <mat-option *ngFor="let honor of ['Mr.', 'Mrs.', 'Ms', 'H.E.']" [value]="honor">
+        <mat-option *ngFor="let honor of ['Mr.', 'Mrs.', 'Ms.', 'H.E.']" [value]="honor">
           {{honor}}
         </mat-option>
       </mat-select>

@@ -14,6 +14,7 @@ export class SpeakerService {
       lastName: item.lastName,
       honor: item.honor,
       position: item.position,
+      displayName: item.displayName
     }).then(res => {
       return res.update({
         id: res.id
@@ -24,7 +25,13 @@ export class SpeakerService {
     return this.speakerCollection.valueChanges();
   }
   updateSpeaker(item): any {
-    console.log(item);
-    return this.speakerCollection.doc(item.id).set(item, {merge: true});
+    const data = {
+      firstName: item.firstName,
+      lastName: item.lastName,
+      honor: item.honor,
+      position: item.position,
+      displayName: item.displayName
+    };
+    return this.speakerCollection.doc(item.id).set(data, {merge: true});
   }
 }

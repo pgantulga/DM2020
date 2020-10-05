@@ -27,10 +27,11 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill" fxFlex="">
-      <mat-label>Number</mat-label>
-      <input matInput [(ngModel)]="data.number">
-    </mat-form-field>
+    <mat-select [(value)]="data.number">
+      <mat-option *ngFor="let number of [1,2,3,4,5,6]" [value]="number">
+        {{number}}
+      </mat-option>
+    </mat-select>
   </div>
 </div>
 <div mat-dialog-actions align="end">

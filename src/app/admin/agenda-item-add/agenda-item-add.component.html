@@ -7,9 +7,17 @@
     </mat-form-field>
     <mat-form-field appearance="fill" fxFlex="">
       <mat-label>Type</mat-label>
-      <mat-select [(value)]="data.type">
-        <mat-option *ngFor="let type of types" [value]="type">
-          {{type}}
+      <mat-select [(value)]="data.kind">
+        <mat-option *ngFor="let item of types" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" fxFlex="">
+      <mat-label>Session</mat-label>
+      <mat-select [(value)]="data.session">
+        <mat-option *ngFor="let session of sessions" [value]="session">
+          {{session}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -35,13 +43,9 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill" fxFlex="">
-      <mat-label>Session</mat-label>
-      <mat-select [(value)]="data.session">
-        <mat-option *ngFor="let session of sessions" [value]="session">
-          {{session}}
-        </mat-option>
-      </mat-select>
+    <mat-form-field>
+      <mat-label>Presenter / Moderator - custom</mat-label>
+      <input matInput [(ngModel)]="data.owner">
     </mat-form-field>
   </div>
 </div>

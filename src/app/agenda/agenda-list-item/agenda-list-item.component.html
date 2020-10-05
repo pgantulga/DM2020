@@ -2,10 +2,10 @@
 <!--  <button mat-icon-button (click)="edit(item)">-->
 <!--    <mat-icon>edit</mat-icon>-->
 <!--  </button>-->
-  <div class="agenda-type discussion" [class.discussion]="item.type === 'discussion'" [class.presentation]="item.type === 'presentation'" [class.social]="item.type === 'social'"></div>
+  <div class="agenda-type discussion" [class.discussion]="item.kind === 'discussion'" [class.presentation]="item.kind === 'presentation'" [class.social]="item.kind === 'social'"></div>
   <div class="agenda-content" fxLayout="column">
     <p class="mat-caption">{{item.start}} - {{item.end}}</p>
     <p class="mat-title">{{item.title}}</p>
-    <p class="mat-body-2">Speaker</p>
+    <p class="mat-body-2" *ngIf="item.owner.id">{{item.owner?.displayName}}, {{item.owner?.position}}</p>
   </div>
 </div>

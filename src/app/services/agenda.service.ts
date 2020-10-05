@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgendaService {
-  agendaItemCollection = this.db.collection<any>('agendaItems', ref => ref.orderBy('start', 'desc'));
-  sessionCollection = this.db.collection<any>('sessionItems');
+  agendaItemCollection = this.db.collection<any>('agendaItems', ref => ref.orderBy('start', 'asc'));
+  sessionCollection = this.db.collection<any>('sessionItems', ref => ref.orderBy('number', 'asc'));
   constructor(public db: AngularFirestore) { }
   addItem(item): any {
     return this.agendaItemCollection.add({
       title: item.title,
-      start: item.title,
+      start: item.start,
       end: item.end,
       owner: item.owner,
-      type: item.type,
+      kind: item.kind,
       session: item.session,
       people: item.owner
     }).then(res => {
@@ -39,7 +40,7 @@ export class AgendaService {
   getItems(): any {
     return this.agendaItemCollection.valueChanges();
   }
-  getSessions(): any {
+  getSessions(): Observable<any> {
     return this.sessionCollection.valueChanges();
   }
   update(item): any {

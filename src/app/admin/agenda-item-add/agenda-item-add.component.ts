@@ -6,7 +6,7 @@ export interface AgendaItem {
   start: any;
   end: any;
   owner: any;
-  type: any;
+  kind: string;
   session: number;
   description: string;
   people: any;
@@ -24,7 +24,7 @@ export class AgendaItemAddComponent implements OnInit {
   ];
   peoples: any;
   sessions = [
-    1, 2, 3, 4
+    0, 1, 2, 3, 4
   ];
   update = false;
   constructor(public dialogRef: MatDialogRef<AgendaItemAddComponent>,
@@ -37,7 +37,7 @@ export class AgendaItemAddComponent implements OnInit {
         start: '',
         end: '',
         owner: null,
-        type: null,
+        kind: 'presentation',
         session: null,
         description: null,
         people: ''

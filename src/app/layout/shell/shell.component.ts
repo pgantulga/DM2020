@@ -30,9 +30,7 @@ export class ShellComponent implements OnInit {
               public routeService: RouteService,
               public menuService: MenuService) {
     this.getLayoutType(this.currentRoute);
-
-  }
-  ngOnInit(): void {
+    console.log(this.router.getCurrentNavigation())
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd))
       .subscribe( (e: any) => {
@@ -40,6 +38,17 @@ export class ShellComponent implements OnInit {
         this.currentLayoutObj = this.routeService.getLayout(this.currentRoute);
         this.sideMenu = this.getSideMenu(this.currentRoute);
       });
+
+  }
+  ngOnInit(): void {
+    console.log('shell')
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationEnd))
+    //   .subscribe( (e: any) => {
+    //     this.currentRoute = this.routeService.getCurrentRoute(e.url);
+    //     this.currentLayoutObj = this.routeService.getLayout(this.currentRoute);
+    //     this.sideMenu = this.getSideMenu(this.currentRoute);
+    //   });
   }
   getLayoutType(currentRoute): any {
     this.currentLayoutObj = this.routeService.getLayout(currentRoute);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ArticleService} from '../../services/article.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-
-  constructor() { }
-
+  article: Observable<any>;
+  constructor(public articleService: ArticleService) { }
   ngOnInit(): void {
+    this.article = this.articleService.getArticle('mdUyLCByvNoU9rbNzkhz');
   }
 
 }

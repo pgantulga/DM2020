@@ -10,11 +10,11 @@
       <button fxFlex="" mat-flat-button color="accent" (click)="openDialog($event)">Add item</button>
       <button fxFlex="" mat-flat-button color="primary" (click)="addSession($event)">Add Session</button>
     </div>
-    <div *ngIf="items | async as items">
-      <app-agenda-list-item *ngFor="let item of items" [item]="item" [route]="'admin'"></app-agenda-list-item>
-    </div>
+<!--    <div *ngIf="items | async as items">-->
+<!--      <app-agenda-list-item *ngFor="let item of items" [item]="item" [route]="'admin'"></app-agenda-list-item>-->
+<!--    </div>-->
 
-    <ng-container *ngIf="sessions | async as sessions">
+    <ng-container *ngIf="sessions">
       <app-session *ngFor="let session of sessions" [item]="session">
         <div *ngIf="items | async as items">
           <app-agenda-list-item *ngFor="let item of items | agendaFilter: session.number" [item]="item" [route]="'admin'"></app-agenda-list-item>

@@ -1,1 +1,12 @@
-<p>exhibition works!</p>
+<div fxLayout="row" style="min-height: 500px">
+  <div fxFlex=""></div>
+  <div class="container" style="height: 100%; padding: 32px 0 0 0;" fxLayout="column" *ngIf="article | async as article">
+    <div class="article-view">
+      <p class="mat-headline article-title">{{article.title}}</p>
+      <p class="mat-subheading-2">2*2 square meter booth - 2000 MNT</p>
+      <div [innerHTML]="article.content"></div>
+    </div>
+  </div>
+  <div fxFlex=""></div>
+</div>
+
