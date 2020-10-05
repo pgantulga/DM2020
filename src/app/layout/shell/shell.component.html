@@ -4,7 +4,7 @@
                [opened]="(currentRoute === 'admin') && !(isHandset$ | async)"
                [mode]="(currentRoute === 'admin') ? 'side' : 'over'">
     <div style="width: 100%; padding: 16px 0 0 16px" fxLayout="column" fxLayoutAlign="center start">
-      <img src="../../../assets/logo_white.png" alt="header_logo" class="side-nav-logo">
+      <img src="../../../assets/header_logo.png" alt="header_logo" class="side-nav-logo">
     </div>
     <mat-nav-list fxLayout="column" *ngIf="currentRoute !== 'admin'">
       <a mat-list-item *ngFor="let item of sideMenu; last as last" routerLink="{{item.link}}" (click)="drawer.close()">
@@ -29,8 +29,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
     </app-navbar>
-    <div class="wrapper" *ngIf="currentRoute">
-      <app-video-wrapper *ngIf="currentRoute === 'home'"></app-video-wrapper>
+    <div class="wrapper" *ngIf="currentRoute && (currentLayoutObj.layout1)">
+      <app-video-wrapper *ngIf="(currentRoute === 'home') "></app-video-wrapper>
       <app-image-wrapper *ngIf="(currentRoute !== 'home') " [route]="currentRoute"></app-image-wrapper>
     </div>
     <div fxLayout="row" [class.layout-two]="currentLayoutObj.layout2">

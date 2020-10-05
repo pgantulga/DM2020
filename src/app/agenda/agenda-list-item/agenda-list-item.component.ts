@@ -35,7 +35,6 @@ export class AgendaListItemComponent{
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd))
       .subscribe( (e: any) => {
-        console.log(e);
         this.currentRoute = this.routeService.getCurrentRoute(e.url);
       });
   }

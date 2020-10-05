@@ -1,10 +1,16 @@
 <div fxLayout="row" style="min-height: 500px">
   <div fxFlex=""></div>
-  <div class="container" style="height: 100%; padding: 32px 0 0 0;" fxLayout="column" *ngIf="article | async as article">
+  <div class="container content-container" style="height: 100%" fxLayout="column" *ngIf="article | async as article">
     <div class="article-view">
       <p class="mat-headline article-title">{{article.title}}</p>
-      <p class="mat-subheading-2">2*2 square meter booth - 2000 MNT</p>
-      <div [innerHTML]="article.content"></div>
+      <p class="mat-subheading-2">2*2 square meter booth - 2 000 000 MNT</p>
+      <div [innerHTML]="article.content" class="innerHtml"></div>
+      <app-warn></app-warn>
+      <mat-divider></mat-divider>
+      <div fxLayout="column" style="padding: 16px 0 16px 0">
+        <p class="mat-headline article-title" style="margin-bottom: 16px">Floor plan</p>
+        <img src="../../../assets/DM2020_floorplan.jpg" alt="" style="width: 100%;">
+      </div>
     </div>
   </div>
   <div fxFlex=""></div>

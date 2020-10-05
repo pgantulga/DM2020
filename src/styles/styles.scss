@@ -18,7 +18,16 @@ body {
   //font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .mat-headline {
-  margin: 0 !important;
+  margin: 0;
+}
+a{
+  color: mat-color($DM-accent-dark, 300)
+}
+.warn-text {
+  p {
+    margin: 0;
+  }
+
 }
 a.nav-link{
   color: rgba(255, 255, 255, 0.6) !important;
@@ -27,21 +36,21 @@ a.nav-link.active-list-item {
   color: white !important;
 }
 
-//a .active-list-item {
-//  color: rgba(255, 255, 255)
-//}
-//Container
-
 @media only screen and (max-width: 1920px ) and ( min-width: 1280px){
   .container {
-    width: 1440px;
+    width: 1400px;
     //1100
   }
+  .content-container {
+    padding: 32px 32px 32px 32px;
+  }
 }
-
 @media only screen and (max-width: 1280px ) and ( min-width: 960px) {
   .container {
     width: 945px;
+  }
+  .content-container {
+    padding: 32px 32px 32px 32px;
   }
 }
 
@@ -49,6 +58,9 @@ a.nav-link.active-list-item {
   .container {
     width: 100%;
     //margin: 0 32px;
+  }
+  .content-container {
+    padding: 16px 16px 16px 16px;
   }
 }
 
@@ -81,4 +93,7 @@ a.nav-link.active-list-item {
 
 .ql-editor {
   height: 300px !important;
+  a {
+    color: red;
+  }
 }

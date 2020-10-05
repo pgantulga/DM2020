@@ -13,6 +13,9 @@ export interface PageDetails {
 export class RouteService {
   constructor(public imageService: ImageService) { }
   getCurrentRoute(url) {
+    if(url === '/') {
+      return 'home'
+    }
     if (url.includes('home')) {
       return 'home';
     }

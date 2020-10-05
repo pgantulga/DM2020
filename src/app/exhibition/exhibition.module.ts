@@ -5,6 +5,7 @@ import { ExhibitionRoutingModule } from './exhibition-routing.module';
 import { ExhibitionComponent } from './exhibition/exhibition.component';
 import {MdModule} from '../md/md.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {LayoutModule} from "../layout/layout.module";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     CommonModule,
     ExhibitionRoutingModule,
     MdModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    LayoutModule
   ]
 })
 export class ExhibitionModule { }

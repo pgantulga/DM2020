@@ -17,6 +17,7 @@ import { SocialComponent } from './social/social.component';
 import { SpeakerListComponent } from './speaker-list/speaker-list.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { SpeakerComponent } from './speaker/speaker.component';
+import { WarnComponent } from './warn/warn.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +35,15 @@ import { SpeakerComponent } from './speaker/speaker.component';
     SpeakerListComponent,
     ProfileImageComponent,
     SpeakerComponent,
+    WarnComponent,
   ],
   exports: [
     ShellComponent,
     NavbarComponent,
     SectionCardComponent,
     SpeakerListComponent,
+    VideoWrapperComponent,
+    WarnComponent
   ],
   imports: [
     RouterModule,

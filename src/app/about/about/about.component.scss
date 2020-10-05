@@ -6,6 +6,9 @@ p {
 }
 
 .article-view {
+  a {
+    color: red !important;
+  }
   text-align: justify;
   //padding: 16px;
   .article-title {
