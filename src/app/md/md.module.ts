@@ -18,6 +18,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatRadioModule} from "@angular/material/radio";
 
 // @ts-ignore
 @NgModule({
@@ -39,7 +41,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatStepperModule,
+    MatRadioModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 4000}},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'never'}}, MatSidenav]

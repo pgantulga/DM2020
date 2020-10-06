@@ -1,0 +1,30 @@
+@import "src/styles/custom-theme";
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: mat-color($DM-accent-dark, 700);
+}
+::ng-deep .mat-step-icon .mat-step-icon-content {
+  //top: 60%;
+  font-size: 16px;
+  text-align: center;
+
+}
+.delegate-type {
+  padding: 16px 16px 16px 16px;
+  margin: 0 8px 0 8px;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid mat-color($DM-accent-dark, 300);
+  .mat-headline {
+    margin: 0 0 0 0;
+  }
+  .mat-display-1{
+    margin: 0 0 0 0 !important;
+  }
+  .mat-body-2 {
+    margin: 0 0 0 0 !important;
+  }
+}
+.delegate-type:hover {
+  cursor: pointer;
+  background-color: red;
+}

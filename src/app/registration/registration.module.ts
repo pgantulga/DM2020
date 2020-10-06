@@ -5,6 +5,7 @@ import { RegistrationRoutingModule } from './registration-routing.module';
 import { RegistrationComponent } from './registration/registration.component';
 import {MdModule} from '../md/md.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     CommonModule,
     RegistrationRoutingModule,
     MdModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class RegistrationModule { }
