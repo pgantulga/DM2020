@@ -5,53 +5,44 @@
       <p class="mat-headline article-title">{{article.title}}</p>
       <div [innerHTML]="article.content"></div>
       <div class="registration">
-        <mat-horizontal-stepper linear #stepper class ="mat-accent" >
-          <mat-step [stepControl]="termsForm" [editable]="true" class="mat-accent">
+        <mat-vertical-stepper linear #stepper>
+          <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+          </ng-template>
+          <mat-step [stepControl]="termsForm" editable>
             <form [formGroup]="termsForm">
               <ng-template matStepLabel>Terms of condition</ng-template>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <ng-container *ngIf="toc | async as toc">
+                <div [innerHTML]="toc.content"></div>
+              </ng-container>
+<!--              <mat-checkbox matStepperNext (change)="goForward(stepper);" formControlName="firstCtrl" required> I agree </button>-->
+
+                <mat-checkbox class="example-margin" formControlName="isAccepted" (change)="goForward(stepper);" required>Agree</mat-checkbox>
+<!--              <button mat-button matStepperNext>Next</button>-->
             </form>
           </mat-step>
-          <mat-step [stepControl]="delegateForm" [editable]="true" class="mat-accent">
-            <form [formGroup]="delegateForm" fxLayout="column">
-              <ng-template matStepLabel>Delegate info</ng-template>
-              <div>
-                <label style="margin: 0 8px 0 0">Delegate type: </label>
-                <mat-radio-group aria-label="Select an option" formControlName="selected" >
-                  <mat-radio-button value="'forum'" style="margin: 0 8px 0 0">Forum delegate</mat-radio-button>
-                  <mat-radio-button  value="'online'">Online delegate</mat-radio-button>
-                </mat-radio-group>
-              </div>
-              <mat-form-field>
-                <mat-label>First name</mat-label>
-                <input matInput placeholder="First name" formControlName="firstName" required>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Last name</mat-label>
-                <input matInput placeholder="last name" formControlName="lastName" required>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Company</mat-label>
-                <input matInput placeholder="company" formControlName="company" required>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Industry</mat-label>
-                <input matInput placeholder="industry" formControlName="industry" required>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Phone</mat-label>
-                <input matInput placeholder="phone" formControlName="phone" required>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="email" formControlName="email" required>
-              </mat-form-field>
-              <div>
-                <button mat-button matStepperNext>Next</button>
-              </div>
-            </form>
+          <mat-step [completed]="isCompleted" >
+            <ng-template matStepLabel>Order</ng-template>
+            <ng-container *ngFor="let item of registrations; let i = index">
+              <app-registration-form [(badge)]="registrations[i]" [index] = i>
+                <button mat-icon-button (click)="remove(i)">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </app-registration-form>
+<!--              <p>{{item.firstName}}</p>-->
+<!--              <p>{{registrations[i].lastName}}</p>-->
+            </ng-container>
+            <div fxLayout="column">
+              <button mat-flat-button style="background-color: rgba(0,0,0,0.2)" (click)="addRegistration()" fxFlex="">Add other</button>
+              <button mat-flat-button (click)="orderDone(stepper)">Save</button>
+            </div>
           </mat-step>
-        </mat-horizontal-stepper>
+          <mat-step>
+            <ng-template matStepLabel>Order summary</ng-template>
+            <p>{{orders?.forum.count}}</p>
+            <button mat-button matStepperNext>Confirm</button>
+          </mat-step>
+        </mat-vertical-stepper>
       </div>
     </div>
   </div>

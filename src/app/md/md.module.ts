@@ -20,6 +20,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatRadioModule} from "@angular/material/radio";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 // @ts-ignore
 @NgModule({
@@ -43,7 +44,8 @@ import {MatRadioModule} from "@angular/material/radio";
     MatGridListModule,
     MatSelectModule,
     MatStepperModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 4000}},
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'never'}}, MatSidenav]
