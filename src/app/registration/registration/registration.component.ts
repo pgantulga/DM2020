@@ -15,14 +15,21 @@ export class RegistrationComponent implements OnInit {
   article: Observable<any>;
   toc: Observable<any>;
   termsForm: FormGroup;
-  isCompleted = false;
+  paymentForm: FormGroup;
   registrations = [];
-  orders: any;
+  orderDataForum = [];
+  orderDataOnline = [];
+  displayedColumns: string[] = ['price', 'qty', 'subtotal'];
   constructor(public articleService: ArticleService, private formBuilder: FormBuilder, private registrationService: RegistrationService) { }
   ngOnInit(): void {
     this.termsForm = this.formBuilder.group({
       isAccepted: [false]
     });
+    this.paymentForm = this.formBuilder.group({
+      paymentType: ['invoice'],
+      invoiceEmail: ['', Validators.required],
+      invoiceCompany: ['', Validators.required]
+    })
     this.toc = this.articleService.getArticle('0gQ7IgiTkUuPINjJv3K8');
     this.addRegistration();
     this.article = this.articleService.getArticle('mdUyLCByvNoU9rbNzkhz');
@@ -43,18 +50,23 @@ export class RegistrationComponent implements OnInit {
     stepper.next();
   }
   orderDone(stepper: MatStepper): any {
+    this.orderDataForum = [];
+    this.orderDataOnline = [];
     this.registrationService.clearCart();
     this.registrationService.addToCard(this.registrations);
     const items = this.registrationService.getItems();
     if (items.length > 0) {
-      this.isCompleted = true;
+      this.orderDataForum = this.orderDataForum.concat(this.registrationService.getOrderSummary()[0]);
+      this.orderDataOnline = this.orderDataOnline.concat(this.registrationService.getOrderSummary()[1]);
       stepper.next();
-      this.orders = this.registrationService.getOrderSummary();
-
     }
   }
   remove(index): any {
-    this.registrations.splice(index,1);
+    this.registrations.splice(index, 1);
+  }
+  finishStep(): any {
+    this.registrationService.saveOrder(this.orderDataOnline, this.orderDataForum, this.paymentForm.value)
+
   }
 
 }

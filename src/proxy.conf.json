@@ -1,0 +1,9 @@
+{
+  "/api/*": {
+    "target":"//monxansh.appspot.com/xansh.json?currency=USD|EUR",
+    "secure":false,
+    "logLevel":"debug",
+    "changeOrigin": true
+
+  }
+}

@@ -11,6 +11,8 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import {SharedModule} from "./shared/shared.module";
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import {SharedModule} from "./shared/shared.module";
     BrowserAnimationsModule,
     MdModule,
     FlexLayoutModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
