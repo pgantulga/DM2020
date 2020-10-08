@@ -14,12 +14,15 @@ import {RegistrationService} from '../../services/registration.service';
 export class RegistrationComponent implements OnInit {
   article: Observable<any>;
   toc: Observable<any>;
+  thankYou: Observable<any>;
   termsForm: FormGroup;
   paymentForm: FormGroup;
   registrations = [];
   orderDataForum = [];
   orderDataOnline = [];
   displayedColumns: string[] = ['price', 'qty', 'subtotal'];
+  orderCompleted = false;
+  loading: boolean;
   constructor(public articleService: ArticleService, private formBuilder: FormBuilder, private registrationService: RegistrationService) { }
   ngOnInit(): void {
     this.termsForm = this.formBuilder.group({
@@ -33,17 +36,18 @@ export class RegistrationComponent implements OnInit {
     this.toc = this.articleService.getArticle('0gQ7IgiTkUuPINjJv3K8');
     this.addRegistration();
     this.article = this.articleService.getArticle('mdUyLCByvNoU9rbNzkhz');
+    this.thankYou = this.articleService.getArticle('vOs3bXXqc5XKfWkpf0iv');
   }
   addRegistration(): any {
     const count = this.registrations.length + 1 ;
     this.registrations.push({
       selected: 'forum',
-      firstName: 'as dfasdf',
-      lastName: 'asdfasdf',
-      company: 'as dfasdf',
-      industry: 'as dfasdf',
-      phone: 'as dfasdf',
-      email: 'as dfasdf',
+      firstName: '',
+      lastName: '',
+      company: '',
+      industry: '',
+      phone: '',
+      email: '',
     });
   }
   goForward(stepper: MatStepper): any{
@@ -65,8 +69,13 @@ export class RegistrationComponent implements OnInit {
     this.registrations.splice(index, 1);
   }
   finishStep(): any {
-    this.registrationService.saveOrder(this.orderDataOnline, this.orderDataForum, this.paymentForm.value)
-
+    this.loading = true;
+    console.log('started');
+    this.registrationService.saveOrder(this.orderDataOnline[0], this.orderDataForum[0], this.paymentForm.value)
+      .then(() => {
+        this.loading = false;
+        this.orderCompleted = true;
+      });
   }
-
 }
+

@@ -4,8 +4,10 @@
     <div class="article-view">
       <p class="mat-headline article-title">{{article.title}}</p>
       <div [innerHTML]="article.content"></div>
-            <div class="registration">
-              <mat-vertical-stepper linear #stepper>
+      <app-warn [articleId]="'0gQ7IgiTkUuPINjJv3K8'"></app-warn>
+      <p>Please follow steps below to register to the conference</p>
+      <div class="registration" *ngIf="!orderCompleted else completed">
+              <mat-vertical-stepper linear #stepper style="border-radius: 8px">
                 <ng-template matStepperIcon="edit">
                   <mat-icon>check</mat-icon>
                 </ng-template>
@@ -30,7 +32,7 @@
                     </app-registration-form>
                   </ng-container>
                   <div fxLayout="column">
-                    <button mat-flat-button style="background-color: rgba(0,0,0,0.2)" (click)="addRegistration()" fxFlex="">Add</button>
+                    <button mat-flat-button style="background-color: rgba(0,0,0,0.2)" (click)="addRegistration()" fxFlex="">Add badge</button>
                     <button mat-flat-button color="accent" (click)="orderDone(stepper)" style="margin-top: 4px">Save and continue</button>
                   </div>
                 </mat-step>
@@ -99,13 +101,20 @@
                         <mat-hint>*Should be cyrillic if you want received Mongolian invoice.</mat-hint>
                       </mat-form-field>
                     </div>
-                    <div>
-                      <button mat-button (click)="finishStep()">Confirm your order</button>
+                    <div fxLayout="row" style="margin-top: 16px">
+                      <button mat-flat-button color="accent" (click)="finishStep()" matStepperNext [disabled]="paymentForm.invalid">Confirm your order</button>
+                      <mat-spinner *ngIf="loading" color="accent" [diameter]="36"></mat-spinner>
                     </div>
                   </form>
                 </mat-step>
               </mat-vertical-stepper>
             </div>
+      <ng-template #completed>
+        <div class="light-theme thank-you article-view" *ngIf="thankYou | async as thank">
+          <p class="mat-headline article-title mat-accent">{{thank.title}}</p>
+          <div [innerHTML]="thank.content"></div>
+        </div>
+      </ng-template>
           </div>
   </div>
   <div fxFlex=""></div>

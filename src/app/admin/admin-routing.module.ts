@@ -8,6 +8,7 @@ import {ArticleViewComponent} from "./article-view/article-view.component";
 import {ImagesComponent} from "./images/images.component";
 import {AdminAgendaComponent} from './admin-agenda/admin-agenda.component';
 import {AdminSpeakersComponent} from './admin-speakers/admin-speakers.component';
+import {AdminDelegatesComponent} from "./admin-delegates/admin-delegates.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'agenda',
     component: AdminAgendaComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'delegates',
+    component: AdminDelegatesComponent,
     canActivate: [AdminGuard]
   },
   {

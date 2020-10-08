@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from "rxjs";
 // import {catchError, map} from 'rxjs/operators';
 // const httpOptions = {
 //   // headers: new HttpHeaders({ 'content-type': 'json'}),
@@ -74,18 +75,26 @@ export class RegistrationService {
       }
     ];
   }
-  // saveDelegates(id): any {
-  //   if(this.items.length) {
-  //     for await(const item of this.item ) {
-  //
-  //     }
-      // for (const item of this.items) {
-      //   this.delegateCollection.add(item)
-      //     .then()
-      //
-      // }
-    // }
-  // }
+   saveDelegates(id): Promise<any> {
+    return new Promise<any> (async (resolve) =>  {
+      if (this.items.length) {
+        for ( const item of this.items ) {
+          await this.saveDelegate(item, id);
+        }
+        resolve(true);
+      }
+    });
+  }
+  async saveDelegate(item, id): Promise<any> {
+    await this.delegateCollection.add(item)
+      .then(res => {
+        return res.update({
+          id: res.id,
+          orderId: id,
+          createdAt: new Date()
+        });
+      });
+  }
   saveOrder(onlineOrder, forumOrder, paymentDetails): Promise<any> {
     return this.orderCollection.add({
       companyName: paymentDetails.invoiceCompany,
@@ -99,11 +108,15 @@ export class RegistrationService {
       forum_currency: 'MNT',
       // total: forumOrder.subtotal + onlineOrder.subtotal,
     }).then(res => {
-      // this.saveDelegates(res.id);
-      return res.update({
-        id: res.id
+      return this.saveDelegates(res.id).then((val) => {
+        return res.update({
+          id: res.id
+        });
       });
     });
+  }
+  getDelegates(): Observable<any> {
+    return this.delegateCollection.valueChanges();
   }
   // private handleError(error: HttpErrorResponse): any {
   //   if (error.error instanceof ErrorEvent) {

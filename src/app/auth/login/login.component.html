@@ -1,3 +1,4 @@
+
 <mat-card class="login-card" fxLayout="column">
   <div *ngIf="authService.user$ | async as user; else login" fxLayout="column">
     <p class="mat-body-1"> Та дараах хэрэглэгчээр нэвтэрсэн байна: <span class="mat-body-2">{{user.email}}</span></p>

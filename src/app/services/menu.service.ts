@@ -92,6 +92,10 @@ export class MenuService {
         link: '/admin/speakers'
       },
       {
+        name: 'Delegates',
+        link: '/admin/delegates'
+      },
+      {
         name: 'Images',
         link: '/admin/images'
       }
