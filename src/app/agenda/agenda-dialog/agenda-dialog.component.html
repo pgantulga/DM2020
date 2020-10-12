@@ -1,4 +1,7 @@
-  <h2 mat-dialog-title >{{data.title}}</h2>
+<button mat-icon-button style="position: absolute; right: 16px" mat-dialog-close>
+  <mat-icon>close</mat-icon>
+</button>
+<h2 mat-dialog-title >{{data.title}}</h2>
   <mat-dialog-content class="mat-typography">
     <div class="dialog-section" fxLayout="row">
       <mat-icon>forum</mat-icon>
@@ -16,6 +19,13 @@
       <mat-icon>list</mat-icon>
       <div fxLayout="column" fxLayoutAlign="center center">
         <p>{{data.description}}</p>
+      </div>
+    </div>
+    <div class="dialog-section" fxLayout="row" *ngIf="data.kind !== 'social'">
+      <mat-icon>people</mat-icon>
+      <div fxLayout="row wrap" fxLayoutAlign="" fxLayout.xs="column">
+<!--        <app-speaker-card *ngIf="!data.people" [item]="data.owner"></app-speaker-card>-->
+        <app-speaker-card *ngFor="let item of data.people" [item]="item"></app-speaker-card>
       </div>
     </div>
   </mat-dialog-content>

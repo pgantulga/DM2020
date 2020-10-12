@@ -18,6 +18,7 @@ import { SpeakerListComponent } from './speaker-list/speaker-list.component';
 import { ProfileImageComponent } from './profile-image/profile-image.component';
 import { SpeakerComponent } from './speaker/speaker.component';
 import { WarnComponent } from './warn/warn.component';
+import { SpeakerCardComponent } from './speaker-card/speaker-card.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { WarnComponent } from './warn/warn.component';
     ProfileImageComponent,
     SpeakerComponent,
     WarnComponent,
+    SpeakerCardComponent,
   ],
   exports: [
     ShellComponent,
@@ -43,7 +45,8 @@ import { WarnComponent } from './warn/warn.component';
     SectionCardComponent,
     SpeakerListComponent,
     VideoWrapperComponent,
-    WarnComponent
+    WarnComponent,
+    SpeakerCardComponent
   ],
   imports: [
     RouterModule,

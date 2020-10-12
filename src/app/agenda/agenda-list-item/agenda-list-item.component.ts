@@ -37,6 +37,9 @@ export class AgendaListItemComponent{
       .subscribe( (e: any) => {
         this.currentRoute = this.routeService.getCurrentRoute(e.url);
       });
+    this.isHandset$.subscribe(res => {
+      this.dialogWidth = res ? '376px' : '850px';
+    });
   }
   openDialog(data): any {
     if (this.route === 'admin') {

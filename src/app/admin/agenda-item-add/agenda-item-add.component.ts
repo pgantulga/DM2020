@@ -26,7 +26,7 @@ export class AgendaItemAddComponent implements OnInit {
   sessions = [
     0, 1, 2, 3, 4
   ];
-  temp = '';
+  temp: any;
   update = false;
   constructor(public dialogRef: MatDialogRef<AgendaItemAddComponent>,
               public speakerService: SpeakerService,
@@ -56,10 +56,8 @@ export class AgendaItemAddComponent implements OnInit {
     this.dialogRef.close();
   }
   addPanelist(): void {
-    console.log(this.temp);
-    console.log(typeof this.data.people);
-    // this.data.people.push(this.temp);
-    console.log(this.data.people);
+    // @ts-ignore
+    this.data.people.push(this.temp);
     this.temp = '';
   }
 }

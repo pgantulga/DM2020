@@ -5,6 +5,14 @@
       <p class="mat-headline article-title">{{article.title}}</p>
       <div [innerHTML]="article.content"></div>
     </div>
+    <div fxLayout="row" fxLayout.xs="column">
+      <button mat-flat-button color="accent" fxFlex="" style="margin: 0 8px 0 0" (click)="goToLink('https://drive.google.com/file/d/1GOR-nCS6AZFh1PulR7T7ej6ZOQRkEr_B/view?usp=sharing')">
+        <mat-icon style="margin: 0 8px 0 0">picture_as_pdf</mat-icon>Post summit report of DM2018
+      </button>
+      <button mat-flat-button color="accent" fxFlex="" (click)="goToLink('https://drive.google.com/file/d/1-kj3waqgPLZ9hXvGXc00Yqxcc1BlKuNe/view?usp=sharing')">
+        <mat-icon style="margin: 0 8px 0 0">picture_as_pdf</mat-icon>Post summit report of DM2019
+      </button>
+    </div>
   </div>
   <div fxFlex=""></div>
 </div>
