@@ -9,7 +9,7 @@ export interface AgendaItem {
   kind: string;
   session: number;
   description: string;
-  people: any;
+  people: [];
 }
 @Component({
   selector: 'app-agenda-item-add',
@@ -26,6 +26,7 @@ export class AgendaItemAddComponent implements OnInit {
   sessions = [
     0, 1, 2, 3, 4
   ];
+  temp = '';
   update = false;
   constructor(public dialogRef: MatDialogRef<AgendaItemAddComponent>,
               public speakerService: SpeakerService,
@@ -40,9 +41,10 @@ export class AgendaItemAddComponent implements OnInit {
         kind: 'presentation',
         session: null,
         description: null,
-        people: ''
+        people: [],
       };
     } else {
+      this.data.people = [];
       this.update = true;
     }
     this.speakerService.getSpeakers()
@@ -52,7 +54,13 @@ export class AgendaItemAddComponent implements OnInit {
   }
   onNoClick(): void {
     this.dialogRef.close();
-  };
-
+  }
+  addPanelist(): void {
+    console.log(this.temp);
+    console.log(typeof this.data.people);
+    // this.data.people.push(this.temp);
+    console.log(this.data.people);
+    this.temp = '';
+  }
 }
 

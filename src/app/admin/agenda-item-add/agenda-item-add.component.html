@@ -43,15 +43,22 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Presenter / Moderator - custom</mat-label>
-      <input matInput [(ngModel)]="data.owner">
+    <div *ngFor="let item of data.people">
+      {{item.displayName}}
+    </div>
+    <mat-form-field appearance="fill" fxFlex="">
+      <mat-label>Panelist</mat-label>
+      <mat-select [(value)]="temp" (select)="addPanelist()">
+        <mat-option *ngFor="let person of peoples" [value]="person">
+          {{person.firstName}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
+    <button (click)="addPanelist()">Add panelist</button>
   </div>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">No Thanks</button>
     <button mat-button [mat-dialog-close]="data"  *ngIf="update">Update</button>
   <button mat-button [mat-dialog-close]="data"  *ngIf="!update">Create</button>
-
 </div>

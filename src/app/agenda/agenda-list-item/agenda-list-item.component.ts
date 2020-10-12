@@ -42,14 +42,14 @@ export class AgendaListItemComponent{
     if (this.route === 'admin') {
       this.edit(data);
     } else {
-      // const dialogRef = this.dialog.open(AgendaDialogComponent, {
-      //   width: this.dialogWidth,
-      //   height: '70%',
-      //   data
-      // });
-      // dialogRef.afterClosed().subscribe(result => {
-      //   console.log('Dialog result: ${result}');
-      // });
+      const dialogRef = this.dialog.open(AgendaDialogComponent, {
+        width: this.dialogWidth,
+        height: '70%',
+        data
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog result: ${result}');
+      });
     }
   }
   edit(data): any {

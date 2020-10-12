@@ -1,0 +1,26 @@
+@import "src/styles/custom-theme";
+.dialog-section {
+padding: 8px 0 8px 0;
+  p {
+    margin: 0;
+  }
+  mat-icon {
+    margin: 0 12px 0 0;
+  }
+}
+.mat-dialog-title {
+  //color: mat-color($DM-accent-dark);
+}
+
+::ng-deep .mat-dialog-container .presentation{
+  border-top: 2px solid mat-color($DM-accent-dark,300);
+  //background-color: red !important;
+}
+::ng-deep .mat-dialog-container .social{
+  border-top: 2px solid #34a853;;
+  //background-color: red !important;
+}
+::ng-deep .mat-dialog-container .discussion{
+  border-top: 2px solid #fbbc05;
+  //background-color: red !important;
+}
