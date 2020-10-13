@@ -22,6 +22,13 @@
       </div>
     </div>
     <div class="dialog-section" fxLayout="row" *ngIf="data.kind !== 'social'">
+      <mat-icon>person</mat-icon>
+      <div fxLayout="row wrap" fxLayoutAlign="" fxLayout.xs="column">
+        <!--        <app-speaker-card *ngIf="!data.people" [item]="data.owner"></app-speaker-card>-->
+        <app-speaker-card  [item]="data.owner"></app-speaker-card>
+      </div>
+    </div>
+    <div class="dialog-section" fxLayout="row" *ngIf="data.kind === 'discussion'">
       <mat-icon>people</mat-icon>
       <div fxLayout="row wrap" fxLayoutAlign="" fxLayout.xs="column">
 <!--        <app-speaker-card *ngIf="!data.people" [item]="data.owner"></app-speaker-card>-->

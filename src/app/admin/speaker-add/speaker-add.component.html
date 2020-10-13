@@ -1,6 +1,19 @@
 <h1 mat-dialog-title>Add item</h1>
 <div mat-dialog-content>
   <div fxLayout="column">
+    <ng-container *ngIf="data.id">
+      <p>Profile picture</p>
+      <input type="file" (change)="onFileSelected($event.target.files)" id="file">
+      <button mat-flat-button (click)="upload()">Upload file</button>
+      <div *ngIf="snapshot | async as snap">
+        {{snap.bytesTransferred}} of {{snap.totalBytes}}
+      </div>
+      <div *ngIf="percentage | async as pct">
+        <progress [value]="pct" max="100"></progress>
+        {{pct | number}} %
+      </div>
+<!--      {{ snap.bytesTransferred }} of {{ snap.totalBytes }}-->
+    </ng-container>
     <mat-form-field fxFlex="">
       <mat-label>First name</mat-label>
       <input matInput [(ngModel)]="data.firstName">

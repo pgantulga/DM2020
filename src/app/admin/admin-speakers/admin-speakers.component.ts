@@ -36,6 +36,7 @@ export class AdminSpeakersComponent implements OnInit {
     const dialogRef = this.dialog.open(SpeakerAddComponent, {
       width: this.dialogWidth,
       height: '70%',
+
       data
     });
     dialogRef.afterClosed().subscribe(result => {

@@ -40,7 +40,6 @@ export class SpeakerListComponent implements OnInit {
   }
 
   openDialog(data): any {
-    console.log(this.route);
     if (this.route === 'admin') {
       this.edit(data);
     } else {
