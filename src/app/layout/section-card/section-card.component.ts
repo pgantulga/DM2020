@@ -13,7 +13,7 @@ import {DefaultDialogComponent} from "../default-dialog/default-dialog.component
   styleUrls: ['./section-card.component.scss']
 })
 export class SectionCardComponent implements OnInit {
-  events: any;
+  videos: any;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset])
     .pipe(
       map( result => result.matches),
@@ -27,29 +27,7 @@ export class SectionCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.events = [
-      {
-        title: 'Conference',
-        date: 'October 30, 2020',
-        image: this.imageService.getImage('home_conference'),
-        content: this.articleService.getArticle('9gTiS3DsUhcNtpC2vZQK'),
-        url: 'agenda'
-      },
-      {
-        title: 'Workshops',
-        date: 'October 1-30, 2020',
-        image: this.imageService.getImage('home_workshop'),
-        content: this.articleService.getArticle('V9h8UuKjrPwMvXwubFIi'),
-        url: 'agenda'
-      },
-      {
-        title: 'Exhibition',
-        date: 'October 30, 2020',
-        image: this.imageService.getImage('home_exhibition'),
-        content: this.articleService.getArticle('jcitLm9SERHOWvbOT8A3'),
-        url: 'exhibition'
-      }
-    ];
+    // this.vides =
     this.isHandset$.subscribe(res => {
       this.dialogWidth = res ? '350px' : '850px';
     });

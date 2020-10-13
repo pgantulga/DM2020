@@ -8,7 +8,7 @@
   </div>
   <div fxFlex>
     <mat-grid-list [cols]="(isHandset$ | async) ? 1 : 2"  rowHeight="1:1" gutterSize="6px" >
-      <mat-grid-tile *ngFor="let item of events" (click)="openDialog(item)">
+      <mat-grid-tile *ngFor="let item of videos" (click)="openDialog(item)">
         <button mat-icon-button style="position: absolute; top:0; right: 0px">
           <mat-icon>launch</mat-icon>
         </button>

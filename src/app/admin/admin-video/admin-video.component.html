@@ -1,0 +1,17 @@
+<div class="light-theme" fxLayout="column" style="height: 100%">
+  <div class="mat-app-background" fxLayout="column" fxFlex>
+    <mat-toolbar>
+      <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        Articles
+        <button mat-flat-button class="mat-accent" (click)="openDialog($event)">
+          Add video
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+<!--    <div class="article-list-container" *ngIf="articles | async as articles">-->
+<!--      <article-list *ngFor="let item of articles; last as last" [item]="item">-->
+<!--        <mat-divider *ngIf="!last"></mat-divider>-->
+<!--      </article-list>-->
+<!--    </div>-->
+  </div>
+</div>

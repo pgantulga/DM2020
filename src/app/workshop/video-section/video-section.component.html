@@ -1,0 +1,25 @@
+<div class="section-card-container" fxLayout.xs="column" fxLayout.gt-sm="row" >
+  <div class="section-card-title" fxLayout="column" fxLayoutAlign="space-between start" >
+    <div fxLayout="column">
+      <p class="mat-display-2">Key events</p>
+      <div class="mat-body-2 ">Conferences, Workshops, Exhibition</div>
+    </div>
+<!--    <app-social></app-social>-->
+  </div>
+  <div fxFlex>
+    <mat-grid-list [cols]="(isHandset$ | async) ? 1 : 2"  rowHeight="1:1" gutterSize="6px" >
+<!--      <mat-grid-tile *ngFor="let item of videos" (click)="openDialog(item)">-->
+<!--        <button mat-icon-button style="position: absolute; top:0; right: 0px">-->
+<!--          <mat-icon>launch</mat-icon>-->
+<!--        </button>-->
+<!--        <div class="item-card-container" fxLayout="column" fxLayoutAlign="end start" fxFlex="" >-->
+<!--          <p class="mat-title mat-accent">{{item.date}}</p>-->
+<!--          <p [class.mat-display-2]="!(isHandset$ | async)" [class.mat-display-1]="isHandset$ | async">{{item.title}}</p>-->
+<!--        </div>-->
+<!--        <ng-container *ngIf="item.image | async as image">-->
+<!--          <img class="tile-cover" [src]="image.embedUrl" alt="image">-->
+<!--        </ng-container>-->
+<!--      </mat-grid-tile>-->
+    </mat-grid-list>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Add video</h1>
+<div mat-dialog-content fxLayout="column">
+  <mat-form-field color="primary">
+    <mat-label>Title</mat-label>
+    <mat-hint class="mat-caption">Hint: Video name</mat-hint>
+    <input type="text" matInput [(ngModel)]="data.title" required>
+  </mat-form-field>
+  <mat-form-field color="accent" >
+    <mat-label>Subtitle</mat-label>
+    <input type="text" matInput [(ngModel)]="data.subtitle" required>
+    <mat-hint>Hint: Video subtitle</mat-hint>
+  </mat-form-field>
+  <mat-form-field color="accent" >
+    <mat-label>Category</mat-label>
+    <input type="text" matInput [(ngModel)]="data.category" required>
+    <mat-hint>Ex: Workshop video or old video</mat-hint>
+  </mat-form-field>
+  <mat-form-field color="accent" >
+    <mat-label>Subcategory</mat-label>
+    <input type="text" matInput [(ngModel)]="data.subcategory" required>
+    <mat-hint>Ex: Workshop questions number</mat-hint>
+  </mat-form-field>
+  <mat-form-field color="accent" >
+    <mat-label>Embedded url</mat-label>
+    <input type="text" matInput [(ngModel)]="data.url" required>
+    <mat-hint>Ex: Url from youtube</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="!data.url">Add</button>
+</div>

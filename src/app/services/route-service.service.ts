@@ -40,6 +40,9 @@ export class RouteService {
     if(url.includes('contact')) {
       return 'contact'
     }
+    if(url.includes('workshop')) {
+      return 'workshop'
+    }
   }
   getLayout(route) {
     if (route === 'admin') {
@@ -97,7 +100,8 @@ export class RouteService {
         return {
           title: 'Workshops',
           subtitle: '#DM2020',
-        }
+          img: this.imageService.getImage('workshop_header')
+        };
       case 'contact':
         return  {
           title: 'Contact us',

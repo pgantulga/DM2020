@@ -3,13 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { WorkshopRoutingModule } from './workshop-routing.module';
 import { WorkshopComponent } from './workshop/workshop.component';
+import { VideoSectionComponent } from './video-section/video-section.component';
+import {MdModule} from '../md/md.module';
+import {LayoutModule} from '../layout/layout.module';
+import {SocialComponent} from '../layout/social/social.component';
 
 
 @NgModule({
-  declarations: [WorkshopComponent],
+  declarations: [WorkshopComponent, VideoSectionComponent],
   imports: [
     CommonModule,
-    WorkshopRoutingModule
+    WorkshopRoutingModule,
+    MdModule,
+    LayoutModule
   ]
 })
 export class WorkshopModule { }

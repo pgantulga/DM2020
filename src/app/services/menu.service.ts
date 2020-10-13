@@ -14,6 +14,10 @@ export class MenuService {
       link: 'agenda'
     },
     {
+      name: 'Workshop',
+      link: 'workshop'
+    },
+    {
       name: 'Registration',
       link: 'registration'
     },
@@ -40,6 +44,10 @@ export class MenuService {
       link: 'agenda'
     },
     {
+      name: 'Workshop',
+      link: 'workshop'
+    },
+    {
       name: 'Registration',
       link: 'registration'
     },
@@ -60,6 +68,10 @@ export class MenuService {
     {
       name: 'Conference agenda',
       link: 'agenda'
+    },
+    {
+      name: 'Workshop',
+      link: 'workshop'
     },
     {
       name: 'Forum registration',
@@ -94,6 +106,10 @@ export class MenuService {
       {
         name: 'Delegates',
         link: '/admin/delegates'
+      },
+      {
+        name: 'Videos',
+        link: '/admin/videos'
       },
       {
         name: 'Images',
