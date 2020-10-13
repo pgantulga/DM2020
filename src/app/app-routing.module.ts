@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./contact/contact.module').then( m => m.ContactModule)
   },
   {
+    path: 'workshop',
+    loadChildren: () => import('./workshop/workshop.module').then( m => m.WorkshopModule)
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },

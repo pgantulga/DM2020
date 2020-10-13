@@ -93,6 +93,11 @@ export class RouteService {
           subtitle: 'The 18th International Mining Investors Forum',
           img: this.imageService.getImage('about_header')
         };
+      case 'workshop':
+        return {
+          title: 'Workshops',
+          subtitle: '#DM2020',
+        }
       case 'contact':
         return  {
           title: 'Contact us',
