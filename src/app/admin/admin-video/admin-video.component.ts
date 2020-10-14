@@ -12,7 +12,8 @@ import {VideoService} from '../../services/video.service';
   styleUrls: ['./admin-video.component.scss']
 })
 export class AdminVideoComponent implements OnInit {
-  dialogWidth: string
+  dialogWidth: string;
+  videos: Observable<any>;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset])
     .pipe(
       map( result => result.matches),
@@ -26,6 +27,7 @@ export class AdminVideoComponent implements OnInit {
     this.isHandset$.subscribe(res => {
       this.dialogWidth = res ? '350px' : '850px';
     });
+    this.videos = this.videoService.getAllVideos();
   }
   openDialog(data): any {
     const dialogRef = this.dialog.open(VideoAddComponent, {
@@ -34,9 +36,26 @@ export class AdminVideoComponent implements OnInit {
       data
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.videoService.addVideo(result).then(() => {
-        console.log('video added');
-      });
+      if (result) {
+        this.videoService.addVideo(result).then(() => {
+          console.log('video added');
+        });
+      }
+    });
+  }
+  editDialog(data): any {
+    const dialogRef = this.dialog.open(VideoAddComponent, {
+      width: this.dialogWidth,
+      height: '70%',
+      data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.videoService.update(result)
+          .then(() => {
+            console.log('Video updated');
+          });
+      }
     });
   }
 }

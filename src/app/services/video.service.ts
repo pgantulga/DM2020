@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from "rxjs";
 export interface Video {
   url: string;
   title: string;
   subtitle: string;
   category: string;
   subcategory: string;
+  id: any
 }
 
 @Injectable({
@@ -27,5 +29,16 @@ export class VideoService {
           id: res.id
         });
       });
+  }
+  getAllVideos(): Observable<any> {
+    return this.videosCollection.valueChanges();
+  }
+  getVideo(id): any {
+    return this.videosCollection.doc(id).valueChanges();
+  }
+  update(item): any {
+    if (item.image) {
+      return this.videosCollection.doc(item.id).set(item, {merge: true});
+    }
   }
 }

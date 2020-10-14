@@ -1,0 +1,47 @@
+@import "src/styles/custom-theme";
+
+.video-section-container {
+  padding: 36px 0 36px 0;
+  .mat-display-1{
+    margin: 0 !important;
+  }
+  .mat-display-2{
+    margin: 0 !important;
+  }
+  .video-section-title {
+    width: 250px;
+  }
+}
+
+
+.item-card-container {
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  padding: 20px;
+  .mat-title {
+    margin: 0;
+    //color: mat-color($DM-accent-dark, 500)
+  }
+}
+mat-grid-tile {
+  //background-color: red;
+}
+mat-grid-tile:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.5);
+}
+.tile-cover {
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  //width: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1920px ) and ( min-width: 1280px){
+  .video-section-title {
+    width: 300px;
+    //background-color: green;
+
+  }
+}

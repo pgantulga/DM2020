@@ -25,8 +25,21 @@
     <input type="text" matInput [(ngModel)]="data.url" required>
     <mat-hint>Ex: Url from youtube</mat-hint>
   </mat-form-field>
+  <ng-container *ngIf="data.id">
+    <p>Image</p>
+    <input type="file" (change)="onFileSelected($event.target.files)" id="file">
+    <button mat-flat-button (click)="upload()">Upload file</button>
+    <div *ngIf="snapshot | async as snap">
+      {{snap.bytesTransferred}} of {{snap.totalBytes}}
+    </div>
+    <div *ngIf="percentage | async as pct">
+      <progress [value]="pct" max="100"></progress>
+      {{pct | number}} %
+    </div>
+    <!--      {{ snap.bytesTransferred }} of {{ snap.totalBytes }}-->
+  </ng-container>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" [disabled]="!data.url">Add</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="!data.url">save</button>
 </div>

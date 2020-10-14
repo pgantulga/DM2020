@@ -2,16 +2,23 @@
   <div class="mat-app-background" fxLayout="column" fxFlex>
     <mat-toolbar>
       <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-        Articles
+        Videos
         <button mat-flat-button class="mat-accent" (click)="openDialog($event)">
           Add video
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
-<!--    <div class="article-list-container" *ngIf="articles | async as articles">-->
-<!--      <article-list *ngFor="let item of articles; last as last" [item]="item">-->
+    <div class="video-list-container" *ngIf="videos | async as videos" >
+      <div class="video-admin-list" fxLayout="column" *ngFor="let item of videos" (click)="editDialog(item)">
+        <p class="mat-body-1"><span style="font-weight: bold">Title: </span>{{item.title}}</p>
+        <p class="mat-body-1"><span style="font-weight: bold">Subtitle: </span>{{item.subtitle}}</p>
+        <p><span style="font-weight: bold">Category: </span>{{item.category}}</p>
+        <p><span style="font-weight: bold">Subcategory: </span>{{item.subcategory}}</p>
+        <p><span style="font-weight: bold">Url: </span>{{item.url}} </p>
+      </div>
+<!--      <video-list *ngFor="let item of videos; last as last" [item]="item">-->
 <!--        <mat-divider *ngIf="!last"></mat-divider>-->
-<!--      </article-list>-->
-<!--    </div>-->
+<!--      </video-list>-->
+    </div>
   </div>
 </div>
