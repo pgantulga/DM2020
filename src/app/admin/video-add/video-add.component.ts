@@ -30,7 +30,9 @@ export class VideoAddComponent  {
         title: '',
         subtitle: '',
         url: '',
-        id: ''
+        id: '',
+        videoId: '',
+        createdAt: new Date()
       };
     } else {
       this.update = true;
@@ -40,8 +42,8 @@ export class VideoAddComponent  {
     this.fileToUpload = files.item(0);
   }
   upload(): void {
-    const path = `video_images/${this.data.category}_${this.data.subcategory}`;
-    const ref = this.storage.ref(`video_images/${this.data.category}_${this.data.subcategory}`);
+    const path = `video_images/${this.data.category}_${this.data.id}`;
+    const ref = this.storage.ref(`video_images/${this.data.category}_${this.data.id}`);
     this.task = this.storage.upload(path, this.fileToUpload);
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges().pipe(

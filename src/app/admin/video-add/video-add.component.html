@@ -25,6 +25,11 @@
     <input type="text" matInput [(ngModel)]="data.url" required>
     <mat-hint>Ex: Url from youtube</mat-hint>
   </mat-form-field>
+  <mat-form-field color="accent" >
+    <mat-label>Video Id</mat-label>
+    <input type="text" matInput [(ngModel)]="data.videoId" required>
+    <mat-hint>Ex: id of youtube video</mat-hint>
+  </mat-form-field>
   <ng-container *ngIf="data.id">
     <p>Image</p>
     <input type="file" (change)="onFileSelected($event.target.files)" id="file">

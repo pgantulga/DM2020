@@ -11,12 +11,17 @@
   .video-section-title {
     width: 250px;
   }
+  .cover-icon {
+    transform: scale(3);
+    position: absolute;
+    color: rgba(255,255,255,0.5);
+  }
 }
 
 
-.item-card-container {
+.video-card-container {
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.3);
   padding: 20px;
   .mat-title {
     margin: 0;
@@ -41,6 +46,7 @@ mat-grid-tile:hover {
 @media only screen and (max-width: 1920px ) and ( min-width: 1280px){
   .video-section-title {
     width: 300px;
+    margin: 0 8px 0 0;
     //background-color: green;
 
   }

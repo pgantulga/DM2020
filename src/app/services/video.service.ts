@@ -7,14 +7,16 @@ export interface Video {
   subtitle: string;
   category: string;
   subcategory: string;
-  id: any
+  id: any;
+  videoId: any;
+  createdAt: any;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideoService {
-  videosCollection = this.db.collection('videos');
+  videosCollection = this.db.collection('videos', ref => ref.orderBy('subtitle', 'asc'));
   constructor(private db: AngularFirestore) { }
   addVideo(item): any {
     this.videosCollection.add({
