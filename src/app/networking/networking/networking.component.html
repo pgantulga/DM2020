@@ -1,0 +1,21 @@
+<div fxLayout="row" style="min-height: 500px">
+  <div fxFlex=""></div>
+  <div class="container content-container" style="height: 100%" fxLayout="column" *ngIf="article | async as article">
+    <div class="article-view">
+      <p class="mat-headline article-title">{{article.title}}</p>
+      <div [innerHTML]="article.content"></div>
+    </div>
+    <div fxLayout="row">
+      <div *ngIf="table1 | async as table1" fxFlex="30">
+        <div [innerHTML]="table1.content"></div>
+      </div>
+      <div *ngIf="table2 | async as table2" fxFlex="30">
+        <div [innerHTML]="table2.content"></div>
+      </div>
+      <div *ngIf="table3 | async as table3" fxFlex="30">
+        <div [innerHTML]="table3.content"></div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex=""></div>
+</div>

@@ -1,19 +1,42 @@
-<!--<div class="section-card-container" fxLayout.xs="column" fxLayout.gt-sm="row" >-->
-<!--  <div class="section-card-title" fxLayout="column">-->
-<!--    <p class="mat-display-2">Key events</p>-->
-<!--    <div class="mat-body-2 ">This is subtitle</div>-->
+<div fxLayout="column" class="sponsors-container light-theme mat-app-background">
+  <div class="company-list" fxLayout="column" fxLayout.gt-sm="row" *ngIf="cores | async as cores">
+    <div class="section-title" fxLayout="column">
+      <p class="mat-display-2">Core sponsors</p>
+      <div class="mat-body-2 ">Co-Organizer, Premium sponsor, Platinum sponsor</div>
+    </div>
+    <div class="section-logos" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center" fxFlex="">
+      <div class="company-tile" *ngFor="let item of cores" fxLayout="column" fxLayoutAlign="center center">
+        <p class="mat-body-2 company-title">{{item.title}}</p>
+
+        <img [src]="item.logo" alt="">
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="company-list" fxLayout="column" fxLayout.gt-sm="row" *ngIf="golds | async as golds">
+    <div class="section-title" fxLayout="column">
+<!--      <p class="mat-display-2">Core Sponsors</p>-->
+      <div class="mat-body-2 ">Gold sponsors, Bank of the Event, Badge sponsor</div>
+    </div>
+    <div class="section-logos" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center" fxFlex="">
+      <div class="company-tile" *ngFor="let item of golds" fxLayout="column" fxLayoutAlign="center center">
+        <p class="mat-body-2 company-title">{{item.title}}</p>
+        <img [src]="item.logo" alt="">
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+<!--  <div class="company-list" fxLayout="column" fxLayout.gt-sm="row" *ngIf="golds | async as golds">-->
+<!--    <div class="section-title" fxLayout="column">-->
+<!--      <p class="mat-display-2">Sponsors</p>-->
+<!--      <div class="mat-body-2 ">Regular sponsors</div>-->
+<!--    </div>-->
+<!--    <div class="section-logos" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center" fxFlex="">-->
+<!--      <div class="company-tile" *ngFor="let item of golds" fxLayout="column" fxLayoutAlign="center center">-->
+<!--        <p class="mat-body-2 company-title">{{item.title}}</p>-->
+<!--        <img [src]="item.logo" alt="">-->
+<!--      </div>-->
+<!--    </div>-->
 <!--  </div>-->
-<!--  <div fxFlex>-->
-<!--    <mat-grid-list [cols]="(isHandset$ | async) ? 1 : 3"  rowHeight="1:1" gutterSize="2px" >-->
-<!--      <mat-grid-tile *ngFor="let item of events" (click)="openDialog(item)">-->
-<!--        <div class="item-card-container" fxLayout="column" fxLayoutAlign="end start" fxFlex="" >-->
-<!--          <p class="mat-title mat-accent">{{item.date}}</p>-->
-<!--          <p class="mat-display-2">{{item.title}}</p>-->
-<!--        </div>-->
-<!--        <ng-container *ngIf="item.image | async as image">-->
-<!--          <img class="tile-cover" [src]="image.embedUrl" alt="image">-->
-<!--        </ng-container>-->
-<!--      </mat-grid-tile>-->
-<!--    </mat-grid-list>-->
-<!--  </div>-->
-<!--</div>-->
+</div>
+

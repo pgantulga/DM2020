@@ -1,6 +1,7 @@
 export const config = {
   toolbar: [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+    ['table'],
     ['blockquote', 'code-block'],
     [{ 'header': 1 }, { 'header': 2 }],               // custom button values
     [{ 'list': 'ordered'}, { 'list': 'bullet' }],

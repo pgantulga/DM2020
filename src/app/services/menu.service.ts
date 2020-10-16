@@ -26,6 +26,10 @@ export class MenuService {
       link: 'exhibition'
     },
     {
+      name: 'Networking',
+      link: 'networking'
+    },
+    {
       name: 'About',
       link: 'about'
     },
@@ -56,6 +60,10 @@ export class MenuService {
       link: 'exhibition'
     },
     {
+      name: 'Networking',
+      link: 'networking'
+    },
+    {
       name: 'About',
       link: 'about'
     },
@@ -80,6 +88,10 @@ export class MenuService {
     {
       name: 'Exhibition',
       link: 'exhibition'
+    },
+    {
+      name: 'Networking',
+      link: 'networking'
     },
     {
       name: 'About conference',

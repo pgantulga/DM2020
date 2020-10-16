@@ -51,7 +51,11 @@ import { VideoAddComponent } from './video-add/video-add.component';
     AdminRoutingModule,
     MdModule,
     FlexLayoutModule,
-    QuillModule.forRoot(),
+    QuillModule.forRoot({
+      modules: {
+        table: true
+      }
+    }),
     MatSlideToggleModule,
     ReactiveFormsModule,
     FormsModule,

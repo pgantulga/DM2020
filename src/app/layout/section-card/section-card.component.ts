@@ -48,6 +48,13 @@ export class SectionCardComponent implements OnInit {
         image: this.imageService.getImage('home_exhibition'),
         content: this.articleService.getArticle('jcitLm9SERHOWvbOT8A3'),
         url: 'exhibition'
+      },
+      {
+        title: 'Networking reception',
+        date: 'October 30, 2020',
+        image: this.imageService.getImage('networking_header'),
+        content: this.articleService.getArticle('9Uneif69VC1MvOfh5SW9'),
+        url: 'networking'
       }
     ];
     this.isHandset$.subscribe(res => {

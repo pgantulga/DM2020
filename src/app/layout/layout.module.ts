@@ -46,7 +46,8 @@ import { SpeakerCardComponent } from './speaker-card/speaker-card.component';
     SpeakerListComponent,
     VideoWrapperComponent,
     WarnComponent,
-    SpeakerCardComponent
+    SpeakerCardComponent,
+    SponsorSectionComponent
   ],
   imports: [
     RouterModule,

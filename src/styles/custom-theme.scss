@@ -9,7 +9,7 @@
 @include mat-core();
 //Dark theme
 $DM-primary-dark: mat-palette($mat-grey, 900);
-$DM-accent-dark: mat-palette($mat-deep-purple, 700);
+$DM-accent-dark: mat-palette($mat-deep-purple, 900);
 $DM-warn: mat-palette($mat-red);
 $DM-dark-theme: mat-dark-theme($DM-primary-dark, $DM-accent-dark, $DM-warn);
 $background-color: map_get($mat-grey, 900);

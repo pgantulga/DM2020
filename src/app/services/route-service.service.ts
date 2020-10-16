@@ -31,6 +31,9 @@ export class RouteService {
     if (url.includes('exhibition')) {
       return 'exhibition'
     }
+    if (url.includes('networking')) {
+      return 'networking'
+    }
     if (url.includes('admin')) {
       return 'admin';
     }
@@ -96,6 +99,12 @@ export class RouteService {
           subtitle: 'The 18th International Mining Investors Forum',
           img: this.imageService.getImage('about_header')
         };
+      case 'networking':
+        return {
+          title: 'Networking',
+          subtitle: '#DM2020',
+          img: this.imageService.getImage('networking_header')
+        }
       case 'workshop':
         return {
           title: 'Workshops',

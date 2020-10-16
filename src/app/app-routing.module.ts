@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./exhibition/exhibition.module').then(m => m.ExhibitionModule)
   },
   {
+    path: 'networking',
+    loadChildren: () => import('./networking/networking.module').then(m => m.NetworkingModule)
+  },
+  {
     path: 'contact',
     loadChildren: () => import('./contact/contact.module').then( m => m.ContactModule)
   },

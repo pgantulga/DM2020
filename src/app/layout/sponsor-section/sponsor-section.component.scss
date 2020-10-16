@@ -1,0 +1,67 @@
+@import "src/styles/custom-theme";
+.sponsors-container {
+  border-radius: 8px;
+  padding: 8px;
+}
+.company-list {
+  padding: 36px;
+  .section-title {
+    margin: 0 16px 0 0;
+    padding: 16px 0 0 0;
+    width: 200px;
+    .mat-display-2 {
+      margin: 0;
+      line-height: 46px !important;
+      color: rgba(0,0,0,0.7);
+    }
+    .mat-display-1 {
+      margin: 0;
+    }
+    .mat-body-2 {
+      margin: 0;
+    }
+  }
+  .section-logos {
+    padding: 8px;
+    //background-color: yellow;
+  }
+  .company-tile {
+    position: relative;
+    margin: 4px 8px 4px 8px;
+    padding: 8px;
+    //background-color: red;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+
+    img {
+      width: 100%;
+    }
+  }
+  .company-tile:hover {
+    //background-color: rgba(0,0,0,0.5);
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .company-title {
+    position: absolute;
+    top: -12px;
+    background-color: white;
+    padding: 0 6px 0 6px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .company-list {
+    .company-tile {
+      //background-color: red;
+      width: 250px;
+      height: 250px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
