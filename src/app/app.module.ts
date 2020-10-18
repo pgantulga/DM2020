@@ -20,7 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
     DialogComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     LayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,

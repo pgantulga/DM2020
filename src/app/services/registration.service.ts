@@ -95,10 +95,16 @@ export class RegistrationService {
         });
       });
   }
-  saveOrder(onlineOrder, forumOrder, paymentDetails): Promise<any> {
-    return this.orderCollection.add({
+  getTotalAmount(onlineOrder, forumOrder, rate): any {
+    if (onlineOrder || forumOrder) {
+      return  onlineOrder.subtotal * rate + forumOrder.subtotal;
+    }
+  }
+  saveOrder(onlineOrder, forumOrder, paymentDetails, invoiceNum, totalAmount): Promise<any> {
+    const obj = {
       companyName: paymentDetails.invoiceCompany,
       email: paymentDetails.invoiceEmail,
+      paymentType: paymentDetails.paymentType,
       createdAt: new Date(),
       online_qty: onlineOrder.QTY,
       online_subtotal: onlineOrder.subtotal,
@@ -106,8 +112,14 @@ export class RegistrationService {
       forum_qty: forumOrder.QTY,
       forum_subtotal: forumOrder.subtotal,
       forum_currency: 'MNT',
-      // total: forumOrder.subtotal + onlineOrder.subtotal,
-    }).then(res => {
+      invoiceNumber: invoiceNum,
+      total: totalAmount,
+    };
+    if (paymentDetails.paymentType === 'card') {
+      obj.companyName = 'card payment' + invoiceNum;
+      obj.email = 'card payment' + invoiceNum;
+    }
+    return this.orderCollection.add(obj).then(res => {
       return this.saveDelegates(res.id).then((val) => {
         return res.update({
           id: res.id
@@ -118,27 +130,9 @@ export class RegistrationService {
   getDelegates(): Observable<any> {
     return this.delegateCollection.valueChanges();
   }
-  // private handleError(error: HttpErrorResponse): any {
-  //   if (error.error instanceof ErrorEvent) {
-  //     console.error('An error occurred:', error.error.message);
-  //   } else {
-  //     console.error(
-  //       `Backend returned code ${error.status}, ` + `body was: ${error}`
-  //     );
-  //   }
-  //   return throwError(error);
-  // }
-  // private extractData(res: Response): any {
-  //   const body = res;
-  //   return body || {};
-  // }
+  getLatestInvoice(): Observable<any> {
+    return this.db.collection<any>('orders', ref => ref.orderBy('invoiceNumber', 'desc').limit(1)).valueChanges();
+  }
 
-  // getRate(): Observable<any> {
-  //   return this.http.get(url, httpOptions).pipe(
-  //     map(this.extractData),
-  //     catchError(this.handleError)
-  //   );
-    // return this.http.get<any>(url, {responseType: 'json'});
-  // }
 }
 

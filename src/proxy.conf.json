@@ -1,9 +1,12 @@
 {
-  "/api/*": {
-    "target":"//monxansh.appspot.com/xansh.json?currency=USD|EUR",
-    "secure":false,
-    "logLevel":"debug",
+  "/api": {
+    "target":"https://m.egolomt.mn/billingnew/cardinfo.aspx",
+    "secure":true,
     "changeOrigin": true
-
+  },
+  "/rate": {
+    "target": "http://monxansh.appspot.com/xansh.json?currency=USD|EUR",
+    "secure":false,
+    "changeOrigin": true
   }
 }

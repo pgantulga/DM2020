@@ -104,7 +104,7 @@ export class RouteService {
           title: 'Networking',
           subtitle: '#DM2020',
           img: this.imageService.getImage('networking_header')
-        }
+        };
       case 'workshop':
         return {
           title: 'Workshops',
