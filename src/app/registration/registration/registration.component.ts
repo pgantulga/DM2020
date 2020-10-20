@@ -88,6 +88,8 @@ export class RegistrationComponent implements OnInit {
   finishStep(invoiceNum): any {
     this.loading = true;
     console.log('started');
+    // this.showbank = true;
+
     this.registrationService.saveOrder(
       this.orderDataOnline[0],
       this.orderDataForum[0],
@@ -96,7 +98,7 @@ export class RegistrationComponent implements OnInit {
       this.totalAmount)
       .then(() => {
         this.loading = false;
-        if (this.paymentForm.value.paymentType === 'card') {
+        if (this.paymentForm.value.paymentType === 'card' || this.paymentForm.value.paymentType === 'socialpay') {
           this.showbank = true;
         } else {
           this.orderCompleted = true;

@@ -4,6 +4,15 @@
     <div class="article-view">
       <p class="mat-headline article-title">{{article.title}}</p>
       <div [innerHTML]="article.content"></div>
+      <ng-container>
+        <form action="https://m.egolomt.mn/billingnew/cardinfo.aspx" method="get" #form>
+          <button type="submit" mat-flat-button (click)="form.submit()" color="accent">check</button>
+          <input name="trans_number" hidden type="text" [value]="116"> <br>
+          <input name="success" hidden type="text" [value]="0"><br>
+          <input name="error_code"  hidden type="text" maxlength="9" ><br>
+<!--          <input name="lang" hidden maxlength="1" type="text" value="2"><br>-->
+        </form>
+      </ng-container>
     </div>
   </div>
   <div fxFlex=""></div>

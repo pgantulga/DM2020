@@ -1,0 +1,25 @@
+<div class="discount-section light-theme" *ngIf="article | async as article" fxLayout="row" fxLayout.xs="column"
+     fxLayoutAlign.xs="center center"
+     fxLayoutAlign="space-between center">
+<!--  <div class="discount-logo">-->
+<!--    <img src="../../../assets/logos/socialpay.png" alt="">-->
+<!--  </div>-->
+  <div fxLayout="row">
+    <div fxLayout="column" fxLayoutAlign="center center" class="discount-icon">
+      <mat-icon>local_offer</mat-icon>
+    </div>
+    <div fxLayout="column">
+      <p class="mat-headline" fxHide.xs="">10% off for SocialPay users.</p>
+      <p class="mat-body-2" style="margin: 0">Golomt bank offers 10% discount for Social Pay users. Get SocialPay for discount rate.</p>
+    </div>
+  </div>
+  <div fxLayout="row" style="padding: 8px 4px 8px 4px">
+    <div class="image-button" onclick="location.href = 'https://apps.apple.com/us/app/socialpay/id1152919460'">
+      <img src="../../../assets/logos/appstore.png" alt="">
+    </div>
+    <div class="image-button" onclick="location.href='https://play.google.com/store/apps/details?id=mn.egolomt.socialpay&hl=en'">
+      <img src="../../../assets/logos/googleplay.png" alt="">
+    </div>
+  </div>
+
+</div>
