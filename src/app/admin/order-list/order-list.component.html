@@ -1,0 +1,11 @@
+<div class="order-list-container" fxLayout="column">
+  <div fxLayout="column">
+    <p class="mat-title">{{item.firstName}} {{item.lastName}}</p>
+    <p class="mat-body-2">Company: {{item.company}}</p>
+    <div fxLayout="row">
+      <p class="mat-body-2">Registered: {{item.createdAt | momentPipe}}</p>
+      <p class="mat-body-2" style="margin: 0 4px 0 8px">Order Id: {{item.orderId}}</p>
+    </div>
+  </div>
+
+</div>

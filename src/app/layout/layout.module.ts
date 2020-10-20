@@ -20,6 +20,7 @@ import { SpeakerComponent } from './speaker/speaker.component';
 import { WarnComponent } from './warn/warn.component';
 import { SpeakerCardComponent } from './speaker-card/speaker-card.component';
 import { DiscountComponent } from './discount/discount.component';
+import { AskDialogComponent } from './ask-dialog/ask-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DiscountComponent } from './discount/discount.component';
     WarnComponent,
     SpeakerCardComponent,
     DiscountComponent,
+    AskDialogComponent,
   ],
   exports: [
     ShellComponent,
@@ -50,7 +52,8 @@ import { DiscountComponent } from './discount/discount.component';
     WarnComponent,
     SpeakerCardComponent,
     SponsorSectionComponent,
-    DiscountComponent
+    DiscountComponent,
+    AskDialogComponent
   ],
   imports: [
     RouterModule,

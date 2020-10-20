@@ -25,6 +25,24 @@ admin.initializeApp();
 //         });
 //       });
 //   });
+exports.deleteDelegate = functions.firestore
+  .document('orders/{orderId}')
+  .onDelete((snapshot, context) => {
+    const promises: any = [];
+    const deletedOrderId = snapshot.data().id;
+    return admin.firestore().collection('delegates').where('orderId', '==', deletedOrderId)
+      .get()
+      .then((snapshot: any) => {
+        snapshot.forEach((item: any) => {
+          promises.push(deleteDocPromise(item));
+        });
+        return Promise.all(promises);
+      });
+    function deleteDocPromise(document: any): any {
+      const data = document.data();
+      return admin.firestore().collection('delegates').doc(data.id).delete();
+    }
+  });
 
 exports.getRate = functions.https.onCall( (data, context) => {
   const url = data.url;

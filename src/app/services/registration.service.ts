@@ -116,8 +116,13 @@ export class RegistrationService {
       total: totalAmount,
     };
     if (paymentDetails.paymentType === 'card') {
-      obj.companyName = 'card payment' + invoiceNum;
-      obj.email = 'card payment' + invoiceNum;
+      obj.companyName = 'card payment:' + invoiceNum;
+      obj.email = 'card payment:' + invoiceNum;
+    }
+    if (paymentDetails.paymentType === 'socialpay') {
+      obj.companyName = 'SP payment:' + invoiceNum;
+      obj.email = 'SP payment:' + invoiceNum;
+      obj.total = totalAmount * 0.9;
     }
     return this.orderCollection.add(obj).then(res => {
       return this.saveDelegates(res.id).then((val) => {
@@ -130,8 +135,30 @@ export class RegistrationService {
   getDelegates(): Observable<any> {
     return this.delegateCollection.valueChanges();
   }
+  getOrders(): Observable<any> {
+    return this.orderCollection.valueChanges();
+  }
   getLatestInvoice(): Observable<any> {
     return this.db.collection<any>('orders', ref => ref.orderBy('invoiceNumber', 'desc').limit(1)).valueChanges();
+  }
+  updateOrder(success, transnumber, errorDesc): any {
+    let isPaid = false;
+    let error = errorDesc;
+    if (success === '0') {
+      isPaid = true;
+      error = null;
+    }
+    this.db.collection<any>('orders', ref => ref.where('invoiceNumber', '==', transnumber)).valueChanges()
+      .subscribe(snapshot => {
+        snapshot.forEach(item => {
+          // console.log(item)
+          this.orderCollection.doc(item.id).update({paid: isPaid,
+            errorDesc: error}).then(() => {console.log('Order updated'); });
+        });
+      });
+  }
+  removeOrder(order): Promise<any> {
+    return this.orderCollection.doc(order.id).delete();
   }
 
 }

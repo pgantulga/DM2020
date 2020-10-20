@@ -26,6 +26,7 @@ import { AdminDelegatesComponent } from './admin-delegates/admin-delegates.compo
 import { DelegateListComponent } from './delegate-list/delegate-list.component';
 import { AdminVideoComponent } from './admin-video/admin-video.component';
 import { VideoAddComponent } from './video-add/video-add.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { VideoAddComponent } from './video-add/video-add.component';
     AdminDelegatesComponent,
     DelegateListComponent,
     AdminVideoComponent,
-    VideoAddComponent],
+    VideoAddComponent,
+    OrderListComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

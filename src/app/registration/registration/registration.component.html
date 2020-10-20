@@ -8,12 +8,12 @@
       <app-warn [articleId]="'0gQ7IgiTkUuPINjJv3K8'"></app-warn>
       <p>Please follow steps below to register to the conference</p>
       <div class="registration" *ngIf="!orderCompleted else completed">
-              <mat-vertical-stepper linear #stepper style="border-radius: 8px">
+              <mat-vertical-stepper linear #stepper style="border-radius: 8px" [linear]="true">
                 <ng-template matStepperIcon="edit">
                   <mat-icon>check</mat-icon>
                 </ng-template>
                 <!--                step-1             -->
-                <mat-step [stepControl]="termsForm" editable>
+                <mat-step [stepControl]="termsForm" [editable]="!confirmed">
                   <form [formGroup]="termsForm">
                     <ng-template matStepLabel>Terms of condition</ng-template>
                     <ng-container *ngIf="toc | async as toc">
@@ -22,8 +22,8 @@
                       <mat-checkbox class="example-margin" formControlName="isAccepted" (change)="goForward(stepper);" required>Agree</mat-checkbox>
                   </form>
                 </mat-step>
-                <!--                step-2            -->
-                <mat-step>
+                <!---------------------------------------                step-2: Order            ------------------------------------------------->
+                <mat-step [completed]="step2" [editable]="!confirmed">
                   <ng-template matStepLabel>Order</ng-template>
                   <ng-container *ngFor="let item of registrations; let i = index">
                     <app-registration-form [(badge)]="registrations[i]" [index] = i>
@@ -33,14 +33,23 @@
                     </app-registration-form>
                   </ng-container>
                   <div fxLayout="column">
-                    <button mat-flat-button style="background-color: rgba(0,0,0,0.2)" (click)="addRegistration()" fxFlex="">Add badge</button>
-                    <button mat-flat-button color="accent" (click)="orderDone(stepper)" style="margin-top: 4px">Save and continue</button>
+                    <button mat-flat-button style="background-color: rgba(0,0,0,0.2)" (click)="addRegistration()"
+                            fxFlex="">Add badge
+                    </button>
+                    <button mat-flat-button color="accent" (click)="orderDone(stepper)" [disabled]="!rate" fxFlex="" style="margin-top: 8px">
+                      Save and continue
+                    </button>
+                    <mat-spinner *ngIf="!buttonStep2" color="accent" [diameter]="18"></mat-spinner>
+
                   </div>
                 </mat-step>
-                <!--                step-3            -->
-                <mat-step>
+
+                <!------------------------------              step-3: Order      ---------------------------------- -->
+
+                <mat-step [completed]="step3" [editable]="!confirmed">
                   <ng-template matStepLabel>Order summary</ng-template>
-                  <ng-container *ngIf="orderDataForum[0]?.QTY">
+                  <p class="mat-body-2" *ngIf="!((orderDataForum[0]?.QTY + orderDataOnline[0]?.QTY) > 0)">Please back to previous step to add orders.</p>
+                  <div class="table" *ngIf="orderDataForum[0]?.QTY">
                     <p class="mat-headline" style="text-transform: capitalize;margin: 8px 0 0 0">Forum badge</p>
                     <table mat-table [dataSource]="orderDataForum">
                       <ng-container matColumnDef="price">
@@ -58,8 +67,8 @@
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
-                  </ng-container>
-                  <ng-container *ngIf="orderDataOnline[0]?.QTY">
+                  </div>
+                  <div *ngIf="orderDataOnline[0]?.QTY" class="table">
                     <p class="mat-headline" style="text-transform: capitalize;margin: 8px 0 0 0">Online badge</p>
                     <p class="mat-caption">*Mongol Bank rate: 1 USD = {{rate}} MNT (Last updated: {{rateDate}})</p>
                     <table mat-table [dataSource]="orderDataOnline">
@@ -78,21 +87,26 @@
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
-                  </ng-container>
-                  <button mat-flat-button color="accent" (click)="getTotalAmount(stepper)"  >Accept</button>
+                  </div>
+                  <div fxFlex="" style="padding: 8px 0 8px 0">
+                    <p>Total Amount:  {{totalAmount | currency: 'MNT ' : 'symbol' : '1.0-0'}}</p>
+                  </div>
+                  <button mat-flat-button color="accent" (click)="getTotalAmount(stepper)" *ngIf="((orderDataForum[0]?.QTY + orderDataOnline[0]?.QTY) > 0)" [disabled]="!totalAmount">Go to payment</button>
                 </mat-step>
-                <!--                step-3            -->
-                <mat-step [stepControl]="paymentForm">
-                  <p class="mat-body-2">Total Amount: {{totalAmount | currency: 'MNT ' : 'symbol':'1.0-0' }}</p>
+
+                <!--------------------------------------                step-4: Payment type           ------------------------------------------------>
+
+                <mat-step [stepControl]="paymentForm" [editable]="!confirmed">
+                  <p class="mat-body-2" *ngIf="paymentForm.value?.paymentType !== 'socialpay'">Total Amount: {{totalAmount | currency: 'MNT ' : 'symbol':'1.0-0' }}</p>
+                  <p class="mat-body-2" *ngIf="paymentForm.value?.paymentType === 'socialpay'">Total Amount: {{discountAmount | currency: 'MNT ' : 'symbol':'1.0-0' }}</p>
                   <ng-container *ngIf="latestInvoice | async as latest">
                     <form [formGroup]="paymentForm">
                       <ng-template matStepLabel>Payment type</ng-template>
-                      <!--                  <p>Currently we accept bank transfer</p>-->
                       <label style="margin: 0 8px 0 0">Payment type: </label>
                       <mat-radio-group formControlName="paymentType" >
-                        <mat-radio-button value="invoice" style="margin: 0 8px 0 0">Bank transfer by invoice</mat-radio-button>
-                        <mat-radio-button  value="card" style="margin: 0 8px 0 0">Bank card</mat-radio-button>
-                        <mat-radio-button value="socialpay">Social pay (10% discount)</mat-radio-button>
+                        <mat-radio-button value="socialpay" style="margin: 0 8px 0 0" [disabled]="confirmed">Social pay (10% discount)</mat-radio-button>
+                        <mat-radio-button value="card" style="margin: 0 8px 0 0" [disabled]="confirmed">Bank card</mat-radio-button>
+                        <mat-radio-button value="invoice" style="margin: 0 8px 0 0" [disabled]="confirmed">Bank transfer by invoice</mat-radio-button>
                       </mat-radio-group>
                       <div fxLayout="column" *ngIf="paymentForm.value?.paymentType === 'invoice'">
                         <mat-form-field>
@@ -102,47 +116,40 @@
                         </mat-form-field>
                         <mat-form-field>
                           <mat-label>Organization</mat-label>
-                          <input matInput placeholder="email" formControlName="invoiceCompany" required>
+                          <input matInput placeholder="Organization" formControlName="invoiceCompany" required>
                           <mat-hint>*Should be cyrillic if you want received Mongolian invoice.</mat-hint>
                         </mat-form-field>
-                        <div fxLayout="row" style="margin-top: 16px" *ngIf="paymentForm.value?.paymentType !== 'card' || paymentForm.value?.paymentType !== 'socialpay'">
-                          <button mat-flat-button color="accent" (click)="finishStep(latest[0].invoiceNumber + 1)" matStepperNext [disabled]="paymentForm.invalid">Confirm your order</button>
-                          <mat-spinner *ngIf="loading" color="accent" [diameter]="36"></mat-spinner>
-                        </div>
                       </div>
                     </form>
-                    <div fxLayout="column" *ngIf="paymentForm.value?.paymentType === 'card'">
-                      <p class="mat-body-2">*After confirming your order, your registration will be stored.</p>
-                      <div fxLayout="row" style="margin-top: 16px" *ngIf="!showbank">
-                        <button mat-flat-button color="accent" (click)="finishStep(latest[0].invoiceNumber + 1)">Confirm your order</button>
-                        <mat-spinner *ngIf="loading" color="accent" [diameter]="36"></mat-spinner>
-                      </div>
+                    <div fxLayout="column" *ngIf="paymentForm.value?.paymentType === 'socialpay'">
                       <ng-container *ngIf="showbank">
                         <form action="https://m.egolomt.mn/billingnew/cardinfo.aspx" method="post" #form>
-                          <button type="submit" mat-flat-button (click)="form.submit()" color="accent">Redirect to bank page</button>
+                          <button type="submit" mat-flat-button (click)="form.submit()" color="accent" style="margin: 16px 0 0 0">Redirect to bank page</button>
+                          <input name="key_number"  type="hidden" [value]="key"><br>
+                          <input name="trans_number"  type="hidden" [value]="latest[0].invoiceNumber + 1"><br>
+                          <input name="trans_amount"   type="hidden" maxlength="9" [value]="discountAmount"><br>
+                          <input name="lang"  maxlength="1" type="hidden" value="2"><br>
+                          <input name="social" type="hidden" value="1"><br>
+                        </form>
+                      </ng-container>
+                    </div>
+                    <div fxLayout="column" *ngIf="paymentForm.value?.paymentType === 'card'">
+                      <ng-container *ngIf="showbank">
+                        <form action="https://m.egolomt.mn/billingnew/cardinfo.aspx" method="post" #form>
+                          <button type="submit" mat-flat-button (click)="form.submit()" color="accent" style="margin: 16px 0 0 0">Redirect to bank page</button>
                           <input name="key_number" hidden type="hidden" [value]="key"><br>
                           <input name="trans_number" hidden type="hidden" [value]="latest[0].invoiceNumber + 1"><br>
-                          <input name="trans_amount"  hidden type="hidden" maxlength="9" [value]="1"><br>
+                          <input name="trans_amount"  hidden type="hidden" maxlength="9" [value]="totalAmount"><br>
                           <input name="lang" hidden maxlength="1" type="hidden" value="2"><br>
                         </form>
                       </ng-container>
                     </div>
-                    <div fxLayout="column" *ngIf="paymentForm.value?.paymentType === 'socialpay'">
-                      <p class="mat-body-2">*After confirming your order, your registration will be stored.</p>
-                      <div fxLayout="row" style="margin-top: 16px" *ngIf="!showbank">
+                    <div fxLayout="column" *ngIf="!showbank">
+                      <div fxLayout="row" style="margin-top: 16px;" >
                         <button mat-flat-button color="accent" (click)="finishStep(latest[0].invoiceNumber + 1)">Confirm your order</button>
                         <mat-spinner *ngIf="loading" color="accent" [diameter]="36"></mat-spinner>
                       </div>
-                      <ng-container *ngIf="showbank">
-                        <form action="https://m.egolomt.mn/billingnew/cardinfo.aspx" method="post" #form>
-                          <button type="submit" mat-flat-button (click)="form.submit()" color="accent">Redirect to bank page</button>
-                          <input name="key_number" hidden type="text" [value]="key"><br>
-                          <input name="trans_number" hidden type="text" [value]="latest[0].invoiceNumber + 1"><br>
-                          <input name="trans_amount"  hidden type="text" maxlength="9" [value]="1"><br>
-                          <input name="lang" hidden maxlength="1" type="text" value="2"><br>
-                          <input name="social" type="hidden" value="1"><br>
-                        </form>
-                      </ng-container>
+                      <p class="mat-body-2">*After confirming your order, your registration will be stored.</p>
                     </div>
                   </ng-container>
                 </mat-step>
