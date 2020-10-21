@@ -32,5 +32,5 @@ export class OrderCompleteComponent implements OnInit {
     this.registrationService.updateOrder(this.success, this.transNumber, this.errorDesc);
 
   }
-
+// /registration/order-complete?success=1&trans_number=149&error_code=306&error_desc=Cancelled&card_number=&signature=
 }

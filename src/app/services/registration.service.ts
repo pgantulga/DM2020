@@ -142,16 +142,19 @@ export class RegistrationService {
     return this.db.collection<any>('orders', ref => ref.orderBy('invoiceNumber', 'desc').limit(1)).valueChanges();
   }
   updateOrder(success, transnumber, errorDesc): any {
+    console.log(errorDesc);
+    console.log(typeof transnumber);
     let isPaid = false;
     let error = errorDesc;
+    // tslint:disable-next-line:radix
+    const transNumber = parseInt(transnumber);
     if (success === '0') {
       isPaid = true;
       error = null;
     }
-    this.db.collection<any>('orders', ref => ref.where('invoiceNumber', '==', transnumber)).valueChanges()
+    this.db.collection<any>('orders', ref => ref.where('invoiceNumber', '==', transNumber)).valueChanges()
       .subscribe(snapshot => {
         snapshot.forEach(item => {
-          // console.log(item)
           this.orderCollection.doc(item.id).update({paid: isPaid,
             errorDesc: error}).then(() => {console.log('Order updated'); });
         });

@@ -99,7 +99,7 @@
                 <mat-step [stepControl]="paymentForm" [editable]="!confirmed">
                   <p class="mat-body-2" *ngIf="paymentForm.value?.paymentType !== 'socialpay'">Total Amount: {{totalAmount | currency: 'MNT ' : 'symbol':'1.0-0' }}</p>
                   <p class="mat-body-2" *ngIf="paymentForm.value?.paymentType === 'socialpay'">Total Amount: {{discountAmount | currency: 'MNT ' : 'symbol':'1.0-0' }}</p>
-                  <ng-container *ngIf="latestInvoice | async as latest">
+                  <ng-container >
                     <form [formGroup]="paymentForm">
                       <ng-template matStepLabel>Payment type</ng-template>
                       <label style="margin: 0 8px 0 0">Payment type: </label>
@@ -112,7 +112,7 @@
                         <mat-form-field>
                           <mat-label>Email</mat-label>
                           <input matInput placeholder="email" formControlName="invoiceEmail" required>
-                          <mat-hint>*Invoice will be delivered to this email address.</mat-hint>
+                          <mat-hint>*Invoice will be delivered  to this email address.</mat-hint>
                         </mat-form-field>
                         <mat-form-field>
                           <mat-label>Organization</mat-label>
@@ -126,7 +126,7 @@
                         <form action="https://m.egolomt.mn/billingnew/cardinfo.aspx" method="post" #form>
                           <button type="submit" mat-flat-button (click)="form.submit()" color="accent" style="margin: 16px 0 0 0">Redirect to bank page</button>
                           <input name="key_number"  type="hidden" [value]="key"><br>
-                          <input name="trans_number"  type="hidden" [value]="latest[0].invoiceNumber + 1"><br>
+                          <input name="trans_number"  type="hidden" [value]="newInvoiceNumber"><br>
                           <input name="trans_amount"   type="hidden" maxlength="9" [value]="discountAmount"><br>
                           <input name="lang"  maxlength="1" type="hidden" value="2"><br>
                           <input name="social" type="hidden" value="1"><br>
@@ -138,7 +138,7 @@
                         <form action="https://m.egolomt.mn/billingnew/cardinfo.aspx" method="post" #form>
                           <button type="submit" mat-flat-button (click)="form.submit()" color="accent" style="margin: 16px 0 0 0">Redirect to bank page</button>
                           <input name="key_number" hidden type="hidden" [value]="key"><br>
-                          <input name="trans_number" hidden type="hidden" [value]="latest[0].invoiceNumber + 1"><br>
+                          <input name="trans_number" hidden type="hidden" [value]="newInvoiceNumber"><br>
                           <input name="trans_amount"  hidden type="hidden" maxlength="9" [value]="totalAmount"><br>
                           <input name="lang" hidden maxlength="1" type="hidden" value="2"><br>
                         </form>
@@ -146,7 +146,7 @@
                     </div>
                     <div fxLayout="column" *ngIf="!showbank">
                       <div fxLayout="row" style="margin-top: 16px;" >
-                        <button mat-flat-button color="accent" (click)="finishStep(latest[0].invoiceNumber + 1)">Confirm your order</button>
+                        <button mat-flat-button color="accent" (click)="finishStep(newInvoiceNumber)">Confirm your order</button>
                         <mat-spinner *ngIf="loading" color="accent" [diameter]="36"></mat-spinner>
                       </div>
                       <p class="mat-body-2">*After confirming your order, your registration will be stored.</p>

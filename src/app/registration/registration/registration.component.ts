@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticleService} from '../../services/article.service';
 import {Observable} from 'rxjs';
+import {take} from 'rxjs/internal/operators/take';
 import {Form, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import {RegistrationService} from '../../services/registration.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {AngularFireFunctions} from '@angular/fire/functions';
+import {map} from "rxjs/operators";
 
 
 @Component({
@@ -37,6 +39,7 @@ export class RegistrationComponent implements OnInit {
   step2 = false;
   buttonStep2 = false;
   confirmed = false;
+  newInvoiceNumber: number;
   constructor(public articleService: ArticleService,
               private formBuilder: FormBuilder,
               private registrationService: RegistrationService,
@@ -59,6 +62,14 @@ export class RegistrationComponent implements OnInit {
     this.addRegistration();
     this.latestInvoice = this.registrationService.getLatestInvoice();
     this.getRate();
+    // this.latestInvoice.first(1).subscribe(item => {
+    //   this.newInvoiceNumber = item[0].invoiceNumber + 1;
+    // }).unsubscribe();
+    this.latestInvoice.pipe(
+      take(1),
+    ).subscribe(item => {
+      this.newInvoiceNumber = item[0].invoiceNumber + 1;
+    });
   }
   addRegistration(): any {
     this.registrations.push({

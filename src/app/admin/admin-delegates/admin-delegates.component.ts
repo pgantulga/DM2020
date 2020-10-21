@@ -3,16 +3,26 @@ import {RegistrationService} from "../../services/registration.service";
 import {Observable} from "rxjs";
 import {MatDialog} from '@angular/material/dialog';
 import {AskDialogComponent} from '../../layout/ask-dialog/ask-dialog.component';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+
 
 @Component({
   selector: 'app-admin-delegates',
   templateUrl: './admin-delegates.component.html',
-  styleUrls: ['./admin-delegates.component.scss']
+  styleUrls: ['./admin-delegates.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class AdminDelegatesComponent implements OnInit {
   allDelegates: Observable<any>;
   allOrders: Observable<any>;
-  displayedColumns: string[] = ['date', 'payment', 'isPaid', 'company', 'invoice', 'total', 'action'];
+  displayedColumns: string[] = ['date', 'payment', 'isPaid', 'company', 'invoice', 'total', 'desc' ,'action'];
+  expandedElement: any;
   constructor(private registrationService: RegistrationService, public dialog: MatDialog) {
   }
   ngOnInit(): void {
@@ -32,5 +42,8 @@ export class AdminDelegatesComponent implements OnInit {
           });
       }
     });
+  }
+  openDetail(item): any {
+    console.log(item);
   }
 }
