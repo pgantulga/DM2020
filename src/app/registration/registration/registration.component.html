@@ -32,16 +32,13 @@
                       </button>
                     </app-registration-form>
                   </ng-container>
-                  <div fxLayout="column">
-                    <button mat-flat-button style="background-color: rgba(0,0,0,0.2)" (click)="addRegistration()"
-                            fxFlex="">Add badge
-                    </button>
-                    <button mat-flat-button color="accent" (click)="orderDone(stepper)" [disabled]="!rate" fxFlex="" style="margin-top: 8px">
-                      Save and continue
-                    </button>
-                    <mat-spinner *ngIf="!buttonStep2" color="accent" [diameter]="18"></mat-spinner>
-
-                  </div>
+                  <button mat-flat-button style="background-color: rgba(0,0,0,0.2); margin: 8px 8px 0 0" (click)="addRegistration()"
+                          >Add badge
+                  </button>
+                  <button mat-flat-button color="accent" (click)="orderDone(stepper)" [disabled]="!rate"  style="margin: 8px 8px 0 0">
+                    Save and continue
+                  </button>
+                  <mat-spinner *ngIf="!buttonStep2" color="accent" [diameter]="18"></mat-spinner>
                 </mat-step>
 
                 <!------------------------------              step-3: Order      ---------------------------------- -->

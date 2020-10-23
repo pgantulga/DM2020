@@ -86,13 +86,12 @@ export class RegistrationComponent implements OnInit {
     stepper.next();
   }
   orderDone(stepper: MatStepper): any {
-    if (this.rate) {
       this.orderDataForum = [];
       this.orderDataOnline = [];
       this.registrationService.clearCart();
       this.registrationService.addToCard(this.registrations);
       const items = this.registrationService.getItems();
-      if (items[0].email && items[0].phone && items[0].firstName) {
+      if (items[0].email && items[0].phone && items[0].firstName && items[0].company) {
         this.orderDataForum = this.orderDataForum.concat(this.registrationService.getOrderSummary()[0]);
         this.orderDataOnline = this.orderDataOnline.concat(this.registrationService.getOrderSummary()[1]);
         this.totalAmount = this.registrationService.getTotalAmount(this.orderDataOnline[0], this.orderDataForum[0], this.rate);
@@ -101,7 +100,6 @@ export class RegistrationComponent implements OnInit {
         this.buttonStep2 = false;
         setTimeout(() => {stepper.next(); this.buttonStep2 = true;}, 1000);
       }
-    }
   }
   remove(index): any {
     this.registrations.splice(index, 1);
