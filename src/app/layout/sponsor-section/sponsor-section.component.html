@@ -26,17 +26,30 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-<!--  <div class="company-list" fxLayout="column" fxLayout.gt-sm="row" *ngIf="golds | async as golds">-->
-<!--    <div class="section-title" fxLayout="column">-->
-<!--      <p class="mat-display-2">Sponsors</p>-->
-<!--      <div class="mat-body-2 ">Regular sponsors</div>-->
-<!--    </div>-->
-<!--    <div class="section-logos" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center" fxFlex="">-->
-<!--      <div class="company-tile" *ngFor="let item of golds" fxLayout="column" fxLayoutAlign="center center">-->
-<!--        <p class="mat-body-2 company-title">{{item.title}}</p>-->
-<!--        <img [src]="item.logo" alt="">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <div class="company-list" fxLayout="column" fxLayout.gt-sm="row" *ngIf="regulars | async as regulars">
+    <div class="section-title" fxLayout="column">
+      <p class="mat-display-2">Sponsors</p>
+      <div class="mat-body-2 ">Regular sponsors</div>
+    </div>
+    <div class="section-logos" fxLayout="column" fxLayout.gt-sm="row wrap" fxLayoutAlign="center center" fxFlex="">
+      <div class="company-tile" *ngFor="let item of regulars" fxLayout="column" fxLayoutAlign="center center">
+        <p class="mat-body-2 company-title">{{item.title}}</p>
+        <img [src]="item.logo" alt="">
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="company-list" fxLayout="column" fxLayout.gt-sm="row" *ngIf="supporters | async as supporters">
+    <div class="section-title" fxLayout="column">
+      <p class="mat-display-2">Supporters</p>
+      <div class="mat-body-2 ">Media partner, IT supporter, Supporters</div>
+    </div>
+    <div class="section-logos" fxLayout="column" fxLayout.gt-sm="row wrap" fxLayoutAlign="center center" fxFlex="">
+      <div class="company-tile" *ngFor="let item of supporters" fxLayout="column" fxLayoutAlign="center center">
+        <p class="mat-body-2 company-title">{{item.title}}</p>
+        <img [src]="item.logo" alt="">
+      </div>
+    </div>
+  </div>
 </div>
 

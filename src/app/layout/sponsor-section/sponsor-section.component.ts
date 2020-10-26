@@ -26,6 +26,8 @@ export class SponsorSectionComponent implements OnInit {
     this.organizers = this.sponsorServices.getCompanies('Organizer');
     this.cores = this.sponsorServices.getCompanies('core');
     this.golds = this.sponsorServices.getCompanies('gold');
+    this.regulars = this.sponsorServices.getCompanies('regular');
+    this.supporters = this.sponsorServices.getCompanies('supporter');
   }
 
 }
